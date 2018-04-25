@@ -1,0 +1,143 @@
+;----------------------------------------------------------------------------------------------
+; Definicje procedur udostêpnianych publicznie
+;----------------------------------------------------------------------------------------------
+PUBLIC LCD_INIT, LCD_GOTO_XY, LCD_PUT_CHAR, LCD_PUT_STRING, LCD_PUT_DEC, LCD_PUT_HEX
+PROG SEGMENT CODE ; Definicja segmentu kodu programu
+RSEG PROG ; Segment kodu
+WR_CMD EQU 0FF2CH ; Adres w pamiêci XRAM dla linii sterowania
+WR_DATA EQU 0FF2DH ; Adres w pamiêci XRAM dla linii zapisu danych
+RD_STATUS EQU 0FF2EH ; Adres w pamiêci XRAM dla linii odczytu statusu
+RD_DATA EQU 0FF2FH ; Adres w pamiêci XRAM dla linii odczytu danych
+INITDISP EQU 038H ; Kod inicjalizacji wyœwietlacza
+CLEAR EQU 001H ; Kod czyszczenia wyœwietlacza
+LCDON EQU 00EH ; Kod w³¹czania wyœwietlacza
+;----------------------------------------------------------------------------------------------
+; Przesy³anie zawartoœci na liniê sterowania wyœwietlacza
+; Kod polecenia, które ma byæ wys³ane - A
+;----------------------------------------------------------------------------------------------
+LCD_WR_CMD:
+PUSH ACC ; Od³o¿enie akumulatora na stos
+MOV DPTR, #RD_STATUS ; Przes³anie adresu linii odczytu statusu do rejestru DPTR
+PETLA: ; Pêtla sprawdzaj¹ca zajêtoœæ wyœwietlacza
+MOVX A, @DPTR ; Przes³anie wartoœci spod adresu w DPTR do akumulatora
+JB ACC.7, PETLA ; Sprawdzenie bitu zajêtoœci, jeœli ustawiony – skok do PETLA
+MOV DPTR, #WR_CMD ; Przes³anie adresu linii sterowania do rejestru DPTR
+POP ACC ; Zdjêcie akumulatora ze stosu
+MOVX @DPTR, A ; Przes³anie zawartoœci akumulatora na liniê sterowania
+RET ; Wyjœcie z procedury
+;----------------------------------------------------------------------------------------------
+; Przesy³anie danych na liniê zapisu danych wyœwietlacza
+; Dane, które maj¹ zostaæ przes³ane - A
+;----------------------------------------------------------------------------------------------
+LCD_WR_DATA:
+PUSH ACC ; Od³o¿enie akumulatora na stos
+MOV DPTR, #RD_STATUS ; Przes³anie adresu linii odczytu statusu do rejestru DPTR
+PETLA1: ; Pêtla sprawdzaj¹ca zajêtoœæ wyœwietlacza
+MOVX A, @DPTR ; Przes³anie wartoœci spod adresu w DPTR do akumulatora
+JB ACC.7, PETLA1 ; Sprawdzenie bitu zajêtoœci, jeœli ustawiony – skok do PETLA1
+MOV DPTR, #WR_DATA ; Przes³anie adresu linii zapisu danych do rejestru DPTR
+POP ACC ; Zdjêcie akumulatora ze stosu
+MOVX @DPTR, A ; Przes³anie zawartoœci akumulatora na liniê zapisu danych
+RET ; Wyjœcie z procedury
+1;----------------------------------------------------------------------------------------------
+; Incijalizacja wyœwietlacza
+; Brak argumentów
+;----------------------------------------------------------------------------------------------
+LCD_INIT:
+MOV A, #INITDISP ; Przes³anie kodu inicjalizacji do akumulatora
+CALL LCD_WR_CMD ; Wywo³anie procedury pisz¹cej na liniê sterowania
+MOV A, #CLEAR ; Przes³anie kodu czyszczenia wyœwietlacza do akumulatora
+CALL LCD_WR_CMD ; Wywo³anie procedury pisz¹cej na liniê sterowania
+MOV A, #LCDON ; Przes³anie kodu w³¹czania wyœwietlacza do akumulatora
+CALL LCD_WR_CMD ; Wywo³anie procedury pisz¹cej na liniê sterowania
+RET ; Wyjœcie z procedury
+;----------------------------------------------------------------------------------------------
+; Ustawianie kursora na pozycji o podanych wspó³rzêdnych x i y
+; Wspó³rzêdne kursora y: 1 bit(0,1), x: 4 bity(0,15) - A(---yxxxx)
+;----------------------------------------------------------------------------------------------
+LCD_GOTO_XY:
+MOV R2, #0 ; Wyzerowanie rejestru R2(y)
+JNB ACC.5, DALEJ ; Jeœli 5. bit akumulatora(y) = 0 – skok do DALEJ
+MOV R2, #1 ; Jeœli nie, to y = 1
+DALEJ:
+MOV R3, A ; Przes³anie akumulatora do R3
+MOV A, #00001111b ; Przes³anie maski dla x do akumulatora
+ANL A, R3 ; Zastosowanie maski
+MOV R1, A ; Przes³anie wartoœci z A(x) do R1
+MOV A, R2 ; Przes³anie y do akumulatora
+MOV B, #64 ; Przes³anie 64 – liczby bajtów w linii LCD do rejestru B
+MUL AB ; Pomno¿enie A i B(wyznaczenie adresu pamiêci dla y)
+ADD A, R1 ; Dodanie do akumulatora wspó³rzêdnej x
+ORL A, #128 ; W³¹czenie adresowania pamiêci DD-RAM wyœwietlacza
+CALL LCD_WR_CMD ; Wywo³anie procedury pisz¹cej na liniê sterowania
+RET ; Wyjœcie z procedury
+RET
+;----------------------------------------------------------------------------------------------
+; Wypisywanie znaku na wyœwietlaczu
+; Kod ASCII znaku, który ma zostaæ wypisany - A
+;----------------------------------------------------------------------------------------------
+LCD_PUT_CHAR:
+CALL LCD_WR_DATA ; Wywo³anie procedury przesy³aj¹cej dane do wyœwietlacza
+RET ; Wyjœcie z procedury
+;----------------------------------------------------------------------------------------------
+; Wypisywanie ³añcucha znaków na wyœwietlaczu
+; WskaŸnik na ³añcuch, który ma zostaæ wypisany - DPTR
+;----------------------------------------------------------------------------------------------
+LCD_PUT_STRING:
+CLR A ; Wyzerowanie akumulatora
+MOVC A, @A+DPTR ; Odczytanie kolejnego znaku z pamiêci programu
+JZ KONIEC ; Je¿eli 0(koniec ³añcucha), skok do koñca procedury
+PUSH DPH ; Od³o¿enie na stos starszych bitów adresu ³añcucha
+PUSH DPL ; Od³o¿enie na stos m³odszych bitów adresu ³añcucha
+CALL LCD_PUT_CHAR ; Wywo³anie procedury wypisuj¹cej znak na wyœwietlaczu
+POP DPL ; Zdjêcie ze stosu m³odszych bitów adresu ³añcucha
+POP DPH ; Zdjêcie ze stosu starszych bitów adresu ³añcucha
+INC DPTR ; Zwiêkszenie adresu ³añcucha(wskazuje na kolejny znak)
+SJMP LCD_PUT_STRING ; Pêtla instrukcji, skok do pocz¹tku procedury
+KONIEC:
+RET ; Wyjœcie z procedury
+;----------------------------------------------------------------------------------------------
+; Wypisywanie liczby(DEC) z zaresu 0 - 99 na wyœwietlaczu
+; Liczba, która ma zostaæ wypisana - A
+;----------------------------------------------------------------------------------------------
+LCD_PUT_DEC:
+MOV B, #10 ; Przes³anie do B bazy systemu - 10
+DIV AB ; Dzielenie liczby w akumulatorze przez bazê systemu
+ADD A, #48 ; Dodanie do akumulatora 48(otrzymamy kod ASCII cyfry)
+CALL LCD_PUT_CHAR ; Wyœwietlenie cyfry na LCD
+MOV A, B ; Przes³anie do akumulatora reszty z dzielenia
+2ADD A, #48 ; Dodanie do akumulatora 48(otrzymamy kod ASCII cyfry)
+CALL LCD_PUT_CHAR ; Wyœwietlenie cyfry na LCD
+RET ; Wyjœcie z procedury
+;----------------------------------------------------------------------------------------------
+; Wypisywanie liczby(HEX) z zakresu 0 - 255 na wyœwietlaczu
+; Liczba, która ma zostaæ wypisana - A
+;----------------------------------------------------------------------------------------------
+LCD_PUT_HEX:
+MOV B, #16 ; Przes³anie do B bazy systemu - 16
+DIV AB ; Dzielenie liczby w akumulatorze przez bazê systemu
+MOV R1, A ; Backup akumulatora w R1
+ADD A, #246 ; Dodanie 246 do akumulatora - sprawdzenie czy A > 9
+JNC DALEJ1 ; Jeœli nie ma przeniesienia to skok do DALEJ1
+MOV A, R1 ; Jeœli jest - restore akumulatora z R1
+ADD A, #55 ; Dodanie 55 do akumulatora(otrzymamy kod ASCII litery)
+CALL LCD_PUT_CHAR ; Wyœwietlenie litery na LCD
+JMP RESZTA ; Skok wymijaj¹cy - przejœcie do konwersji reszty
+DALEJ1:
+MOV A, R1 ; Restore akumulatora z R1
+ADD A, #48 ; Dodanie do akumulatora 48(otrzymamy kod ASCII cyfry)
+CALL LCD_PUT_CHAR ; Wyœwietlenie cyfry na LCD
+RESZTA:
+MOV A, B ; Przes³anie do akumulatora reszty z dzielenia
+ADD A, #246 ; Dodanie 246 do akumulatora - sprawdzenie czy A > 9
+JNC DALEJ2 ; Jeœli nie ma przeniesienia to skok do DALEJ2
+MOV A, B ; Przes³anie do akumulatora reszty z dzielenia
+ADD A, #55 ; Dodanie 55 do akumulatora(otrzymamy kod ASCII litery)
+CALL LCD_PUT_CHAR ; Wyœwietlenie litery na LCD
+JMP KONIEC_PUT_HEX ; Skok wymijaj¹cy - przejœcie do koñca procedury
+DALEJ2:
+MOV A, B ; Przes³anie reszty do akumulatora
+ADD A, #48 ; Dodanie do akumulatora 48(otrzymamy kod ASCII cyfry)
+CALL LCD_PUT_CHAR ; Wyœwietlenie cyfry na LCD
+KONIEC_PUT_HEX:
+RET ; Wyjœcie z procedury
