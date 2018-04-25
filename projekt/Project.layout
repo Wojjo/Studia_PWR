@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Layout>
+	<Files>
+		<File Name="main.cpp" Top="Yes" Tabpos="1" TopLine="1">
+			<Cursor Line="1" Column="1"/>
+			<Selection Line="125" Column="2"/>
+		</File>
+		<File Name="ulamek.cpp" Top="No" Tabpos="2" TopLine="14">
+			<Cursor Line="45" Column="1"/>
+			<Selection Line="1" Column="1"/>
+		</File>
+		<File Name="ulamek.h" Top="No" Tabpos="3" TopLine="1">
+			<Cursor Line="1" Column="1"/>
+			<Selection Line="25" Column="1"/>
+		</File>
+	</Files>
+</Layout>
