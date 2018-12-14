@@ -1,0 +1,11 @@
+C:\Users\pwojc\source\repos\PEAII_TS\PEAII_TS\bin\Release\netcoreapp2.1\PEAII_TS.deps.json
+C:\Users\pwojc\source\repos\PEAII_TS\PEAII_TS\bin\Release\netcoreapp2.1\PEAII_TS.runtimeconfig.json
+C:\Users\pwojc\source\repos\PEAII_TS\PEAII_TS\bin\Release\netcoreapp2.1\PEAII_TS.runtimeconfig.dev.json
+C:\Users\pwojc\source\repos\PEAII_TS\PEAII_TS\bin\Release\netcoreapp2.1\PEAII_TS.dll
+C:\Users\pwojc\source\repos\PEAII_TS\PEAII_TS\bin\Release\netcoreapp2.1\PEAII_TS.pdb
+C:\Users\pwojc\source\repos\PEAII_TS\PEAII_TS\obj\Release\netcoreapp2.1\PEAII_TS.csprojAssemblyReference.cache
+C:\Users\pwojc\source\repos\PEAII_TS\PEAII_TS\obj\Release\netcoreapp2.1\PEAII_TS.csproj.CoreCompileInputs.cache
+C:\Users\pwojc\source\repos\PEAII_TS\PEAII_TS\obj\Release\netcoreapp2.1\PEAII_TS.AssemblyInfoInputs.cache
+C:\Users\pwojc\source\repos\PEAII_TS\PEAII_TS\obj\Release\netcoreapp2.1\PEAII_TS.AssemblyInfo.cs
+C:\Users\pwojc\source\repos\PEAII_TS\PEAII_TS\obj\Release\netcoreapp2.1\PEAII_TS.dll
+C:\Users\pwojc\source\repos\PEAII_TS\PEAII_TS\obj\Release\netcoreapp2.1\PEAII_TS.pdb
