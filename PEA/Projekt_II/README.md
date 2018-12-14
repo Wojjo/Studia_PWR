@@ -1,2 +1,2 @@
-Projekt II
-algorytm tabu search
+Projekt II:
+-algorytm tabu search
