@@ -1,3 +1,3 @@
 Algorytmy:
-Brute force
+Brute force,
 Branch and bound
