@@ -1,0 +1,7 @@
+C:\Users\pwojc\OneDrive\Polibuda\Projekt_I_PEA\Projekt_I_PEA\bin\Release\Projekt_I_PEA.exe.config
+C:\Users\pwojc\OneDrive\Polibuda\Projekt_I_PEA\Projekt_I_PEA\bin\Release\Projekt_I_PEA.exe
+C:\Users\pwojc\OneDrive\Polibuda\Projekt_I_PEA\Projekt_I_PEA\bin\Release\Projekt_I_PEA.pdb
+C:\Users\pwojc\OneDrive\Polibuda\Projekt_I_PEA\Projekt_I_PEA\obj\Release\Projekt_I_PEA.csprojAssemblyReference.cache
+C:\Users\pwojc\OneDrive\Polibuda\Projekt_I_PEA\Projekt_I_PEA\obj\Release\Projekt_I_PEA.csproj.CoreCompileInputs.cache
+C:\Users\pwojc\OneDrive\Polibuda\Projekt_I_PEA\Projekt_I_PEA\obj\Release\Projekt_I_PEA.exe
+C:\Users\pwojc\OneDrive\Polibuda\Projekt_I_PEA\Projekt_I_PEA\obj\Release\Projekt_I_PEA.pdb
