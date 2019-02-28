@@ -8,20 +8,21 @@ import java.util.Scanner;
 
 public class instancja
 {
-private static ArrayList<przedmiot> itemList;
-private static ArrayList<przedmiot> knapsack; //aktualna zawartosc plecaka 
+static ArrayList<przedmiot> itemList;
 private int numItems;
 private boolean[] solution;
 private boolean[] current;
 private static int maxWeight;
 
 
+
+@SuppressWarnings("resource")
 void readfile(String filename) throws FileNotFoundException
 {
 	FileInputStream in = new FileInputStream(new File(filename));
+	
 	Scanner sc = new Scanner(in);
 	itemList = new ArrayList<przedmiot>();
-	knapsack = new ArrayList<przedmiot>();
 	numItems = sc.nextInt();
 	
 	solution = new boolean[numItems];
@@ -39,39 +40,19 @@ public void runKnapsack(String option) {
 	if(option.equals("Brute Force")) {
         //run brute force
         current = new boolean[numItems];
-        brute_force bf = new brute_force(numItems, solution, current);
-        bf.algorithmBF(numItems-1);
-        
-       
+        brute_force bf = new brute_force(maxWeight, solution, current, numItems);
+        bf.startAlgorithm();     
     	System.out.println("Done");
-	}
-
-
-        //output
-     
-        
+	}   
 }
 
-
-
-public static ArrayList<przedmiot> getItemList() {
-	return itemList;
-}
-
-public static void setItemList(ArrayList<przedmiot> itemList) {
-	instancja.itemList = itemList;
-}
-
-
+@SuppressWarnings("resource")
 public static void main(String[] args) {
     
     System.out.println("Podaj nazwe pliku");
-    System.out.println("example: java Knapsack test.txt");
     Scanner scan = new Scanner(System.in);
     String filename = scan.nextLine();            
-  
-
-instancja knapsack = new instancja();
+    instancja knapsack = new instancja();
 
 try {
     knapsack.readfile(filename);
@@ -81,17 +62,6 @@ try {
     System.out.println("ERROR: File not found.");
 }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

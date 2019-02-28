@@ -12,4 +12,8 @@ public class przedmiot
 		this.value=value;
 		this.weight=weight;
 	}
+	public String toString() {
+        return "{KnapsackItem:" + this.index + " value:" 
+            + this.value + " weight: " + this.weight + "}";
+	}
 }
