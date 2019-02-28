@@ -1,5 +1,5 @@
 package zad1;
 
-public class wynik {
+public class Wynik {
 
 }

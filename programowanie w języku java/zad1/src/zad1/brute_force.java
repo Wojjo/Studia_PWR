@@ -1,6 +1,6 @@
 package zad1;
 
-public class brute_force
+public class Brute_force
 {
 	
 	private int maxWeight;
@@ -12,7 +12,7 @@ public class brute_force
 	private float curValue;
 	private int numItems;
 	
-	public brute_force(int maxWeight, boolean[] solution, boolean[] current, int numItems)
+	public Brute_force(int maxWeight, boolean[] solution, boolean[] current, int numItems)
 	{
 		this.maxWeight = maxWeight;
 		this.solution = solution;
@@ -39,8 +39,8 @@ public class brute_force
 			{
 				if(current[i])
 				{
-					curWeight += instancja.itemList.get(i).weight;
-                    curValue += instancja.itemList.get(i).value;
+					curWeight += Instancja.itemList.get(i).weight;
+                    curValue += Instancja.itemList.get(i).value;
 					
 				}
 			}
@@ -72,7 +72,7 @@ public class brute_force
                 " Weight: " + this.curBestWeight);
 		 for(int i = 0; i < numItems; i++) {
 	            if(solution[i]) {
-	                System.out.print(instancja.itemList.get(i).index + " ");
+	                System.out.print(Instancja.itemList.get(i).index + " ");
 	            }
 	        }
 	    System.out.println();

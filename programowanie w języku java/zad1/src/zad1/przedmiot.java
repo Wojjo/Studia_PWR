@@ -1,12 +1,12 @@
 package zad1;
 
-public class przedmiot 
+public class Przedmiot 
 {
 	public float value;
 	public int weight;
 	public int index;
 	
-	public przedmiot(int index, float value, int weight)
+	public Przedmiot(int index, float value, int weight)
 	{
 		this.index=index;
 		this.value=value;

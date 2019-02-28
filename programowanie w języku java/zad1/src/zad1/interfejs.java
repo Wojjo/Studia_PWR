@@ -1,5 +1,5 @@
 package zad1;
 
-public class interfejs {
+public class Interfejs {
 
 }
