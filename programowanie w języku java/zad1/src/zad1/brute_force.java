@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class brute_force
 {
-	private static ArrayList<przedmiot> knapsack; //aktualna zawartosc plecaka 
 	
 	private int maxWeight;
 	private boolean[] solution;
@@ -14,8 +13,15 @@ public class brute_force
 	private int curWeight;
 	private float curValue;
 	
+	public brute_force(int maxWeight, boolean[] solution, boolean[] current)
+	{
+		this.maxWeight = maxWeight;
+		this.solution = solution;
+		this.current = current;
+	}
 	
-	private void algorithm(int numSize)
+	
+	void algorithmBF(int numSize)
 	{ 
 		if(numSize < 0)
 		{
@@ -43,14 +49,19 @@ public class brute_force
 		} else
 		{
 			current[numSize] = true;
-			algorithm(numSize - 1);
+			algorithmBF(numSize - 1);
 			current[numSize] = false;
-			algorithm(numSize - 1);
+			algorithmBF(numSize - 1);
 					
 		}	
 	}
 	
-	
+	public void printBruteForceKnapsack()
+	{
+		System.out.println("Using Brute force the best feasible" +
+                " solution found: " + this.curBestValue + 
+                " " + this.curBestWeight);
+	}
 	
 	
 	
