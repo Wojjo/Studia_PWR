@@ -1,5 +1,6 @@
 package zad1;
 
-public class Interfejs {
-
+public interface Interfejs {
+	public void algorithm(int numSize);
+	public void startAlgorithm();
 }

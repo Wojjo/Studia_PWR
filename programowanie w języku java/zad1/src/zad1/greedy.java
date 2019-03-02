@@ -2,18 +2,19 @@ package zad1;
 
 import java.util.ArrayList;
 
-public class Greedy
+public class Greedy implements Interfejs
 {
 	ArrayList<Przedmiot> orderedList = new ArrayList<Przedmiot>();
 	Przedmiot curItem;
 	private int maxWeight;
 	private int curWeight;
 	private int numItems;
-	float curRatio;
-	float orderedCurRatio;
-	float curValue;
-	boolean solution[];
-	boolean added;
+	private float curRatio;
+	private float orderedCurRatio;
+	private float curValue;
+	private boolean solution[];
+	private boolean added;
+	private String algorithmName = "Greedy";
 	
 	
 	
@@ -26,16 +27,17 @@ public class Greedy
 	
 	public void startAlgorithm()
 	{
-		algorithmGreedy();
-		printBruteForceKnapsack();
+		solution = new boolean[numItems];
+		algorithm(numItems);
+		Wynik.printResult(algorithmName, curValue, curWeight, numItems, solution);
 		
 	}
 	
-	public void algorithmGreedy()
+	public void algorithm(int numSize)
 	{
 	curWeight = 0;	
 	orderedList.add(Instancja.itemList.get(0));
-	for(int i = 1; i < Instancja.itemList.size(); i++)
+	for(int i = 1; i < numSize; i++)
 	{
 		added = false;
 		curItem = Instancja.itemList.get(i);
@@ -75,17 +77,5 @@ public class Greedy
 	}
 	}
 	
-	public void printBruteForceKnapsack() {
-		
-		 System.out.println("Greedy solution: " + 
-         this.curValue + " Weight " + this.curWeight);
-		
-		
-        for(int i = 0; i < numItems; i++) {
-            if(solution[i]) {
-                System.out.print(Instancja.itemList.get(i).index + " ");
-            }
-        }
-        System.out.println();
-    }
+
 }

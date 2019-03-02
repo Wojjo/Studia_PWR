@@ -1,6 +1,6 @@
 package zad1;
 
-public class Brute_force
+public class Brute_force implements Interfejs
 {
 	
 	private int maxWeight;
@@ -11,6 +11,7 @@ public class Brute_force
 	private int curWeight;
 	private float curValue;
 	private int numItems;
+	private String algorithmName = "Brute Force";
 	
 	public Brute_force(int maxWeight, boolean[] solution, boolean[] current, int numItems)
 	{
@@ -20,22 +21,23 @@ public class Brute_force
 		this.numItems = numItems;
 	}
 	
-	void startAlgorithm()
+	public void startAlgorithm()
 	{
-		algorithmBF(numItems-1);
-		printBruteForceKnapsack();
+		solution = new boolean[numItems];
+		algorithm(numItems-1);
+		Wynik.printResult(algorithmName, curBestValue, curBestWeight, numItems, solution);
 		
 	}
 	
 	
-	void algorithmBF(int numSize)
+	public void algorithm(int numSize)
 	{ 
 		if(numSize < 0)
 		{
 			curWeight = 0;
 			curValue = 0;
 			
-			for(int i =0; i < numItems; i++)
+			for(int i = 0; i < numItems; i++)
 			{
 				if(current[i])
 				{
@@ -57,27 +59,13 @@ public class Brute_force
 		} else
 		{
 			current[numSize] = true;
-			algorithmBF(numSize - 1);
+			algorithm(numSize - 1);
 			current[numSize] = false;
-			algorithmBF(numSize - 1);
+			algorithm(numSize - 1);
 					
 		}	
 
 	}
-	
-	public void printBruteForceKnapsack()
-	{
-		System.out.println("Using Brute force the best" +
-                " solution found: " + this.curBestValue + 
-                " Weight: " + this.curBestWeight);
-		 for(int i = 0; i < numItems; i++) {
-	            if(solution[i]) {
-	                System.out.print(Instancja.itemList.get(i).index + " ");
-	            }
-	        }
-	    System.out.println();
-	}
-	
-	
-	
+		
+
 }
