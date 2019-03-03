@@ -55,4 +55,9 @@ public class Brute_force implements Interfejs {
 		}
 
 	}
+	
+	public String info()
+	{
+		return "Metoda polegaj¹ca na analizie wszystkich potencjalnych rozwi¹zañ zadania w celu wybrania tego, które spe³nia warunki zadania";
+	}
 }

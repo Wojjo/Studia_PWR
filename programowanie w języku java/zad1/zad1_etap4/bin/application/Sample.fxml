@@ -35,7 +35,7 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Button fx:id="enterDataButton" layoutX="59.0" layoutY="261.0" mnemonicParsing="false" text="Wprowadź dane ręcznie" />
+                  <Button fx:id="enterDataButton" layoutX="59.0" layoutY="261.0" mnemonicParsing="false" onAction="#enterDataButtonClicked" text="Wprowadź dane ręcznie" />
                   <Button fx:id="readDataButton" layoutX="259.0" layoutY="261.0" mnemonicParsing="false" onAction="#readDataButtonClicked" text="Wczytaj dane z pliku" />
                   <Button fx:id="exitButton" layoutX="442.0" layoutY="261.0" mnemonicParsing="false" onAction="#exitButtonClicked" text="Wyjście" />
                   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="397.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

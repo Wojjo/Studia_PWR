@@ -48,46 +48,6 @@ public class Instancja {
 		}
 	}
 
-	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
-		Scanner scanFile = new Scanner(System.in);
-		Scanner scanNum = new Scanner(System.in);
-		System.out.println("1 - Rêczne wprowadzenie danych\n" + "2 - Wczytaj przedmioty z pliku\n");
-		int choose = scan.nextInt();
-		if (choose == 1) {
-			int a = 1, b, c;
-			Instancja problem = new Instancja();
-			itemList = new ArrayList<Przedmiot>();
-			maxWeight = 25;
-			do {
-				System.out.println("Wprowadz wartosc\n");
-				b = scanNum.nextInt();
-				System.out.println("Wprowadz wage\n");
-				c = scanNum.nextInt();
-				problem.enterData(a, b, c);
-				a += 1;
-			} while (b != 0 && c != 0);
-			problem.solveKnapsackProblem("Brute Force");
-			problem.solveKnapsackProblem("Greedy");
-
-		} else if (choose == 2) {
-
-			System.out.println("Podaj nazwe pliku");
-			String filename = scanFile.nextLine();
-			Instancja problem = new Instancja();
-
-			try {
-				problem.readfile(filename);
-				problem.solveKnapsackProblem("Brute Force");
-				problem.solveKnapsackProblem("Greedy");
-
-			} catch (FileNotFoundException e) {
-				System.out.println("ERROR: File not found.");
-			}
-		} else {
-			System.exit(0);
-
-		}
-	}
+	
 
 }

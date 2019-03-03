@@ -64,5 +64,10 @@ public class Greedy implements Interfejs {
 			}
 		}
 	}
+	
+	public String info()
+	{
+		return  "Algorytmy podejmuj¹ce w ka¿dym kroku tak¹ decyzjê, która w danej chwili wydaje siê najkorzystniejsza";
+	}
 
 }
