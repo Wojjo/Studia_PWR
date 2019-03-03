@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Instancja {
 	static ArrayList<Przedmiot> itemList;
-	private int numItems;
+	private int numItems = 0;
 	private boolean[] solution;
 	private boolean[] current;
 	private static int maxWeight;
@@ -27,20 +27,12 @@ public class Instancja {
 		maxWeight = sc.nextInt();
 
 	}
-	public void items()
-	{
-		itemList = new ArrayList<Przedmiot>();
-		numItems = 6;
-		solution = new boolean[numItems];
-		itemList.add(new Przedmiot(1, 5, 3));
-		itemList.add(new Przedmiot(2, 1, 6));
-		itemList.add(new Przedmiot(3, 7, 2));
-		itemList.add(new Przedmiot(4, 4, 6));
-		itemList.add(new Przedmiot(5, 2, 4));
-		itemList.add(new Przedmiot(6, 9, 9));
-		
-		maxWeight = 20;
-		
+
+	public void enterData(int index, float value, int weight) {
+
+		numItems += 1;
+		itemList.add(new Przedmiot(index, value, weight));
+
 	}
 
 	public void solveKnapsackProblem(String option) {
@@ -59,11 +51,22 @@ public class Instancja {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		Scanner scanFile = new Scanner(System.in);
-		System.out.println("1 - Przedmioty zapisane w programie\n" + "2 - Wczytaj przedmioty z pliku\n");
+		Scanner scanNum = new Scanner(System.in);
+		System.out.println("1 - Rêczne wprowadzenie danych\n" + "2 - Wczytaj przedmioty z pliku\n");
 		int choose = scan.nextInt();
 		if (choose == 1) {
+			int a = 1, b, c;
 			Instancja problem = new Instancja();
-			problem.items();
+			itemList = new ArrayList<Przedmiot>();
+			maxWeight = 25;
+			do {
+				System.out.println("Wprowadz wartosc\n");
+				b = scanNum.nextInt();
+				System.out.println("Wprowadz wage\n");
+				c = scanNum.nextInt();
+				problem.enterData(a, b, c);
+				a += 1;
+			} while (b != 0 && c != 0);
 			problem.solveKnapsackProblem("Brute Force");
 			problem.solveKnapsackProblem("Greedy");
 
