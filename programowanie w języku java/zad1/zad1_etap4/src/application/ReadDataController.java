@@ -18,7 +18,7 @@ public class ReadDataController implements Initializable {
 
 	@FXML
 	TextField readTextField;
-
+	
 	public static void setAlg(int alg1, int alg2) {
 		if (alg1 == 1) {
 			algorithm = "Brute Force";

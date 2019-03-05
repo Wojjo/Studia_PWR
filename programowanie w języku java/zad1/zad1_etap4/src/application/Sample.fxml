@@ -12,19 +12,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" text="Pomoc">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About program" />
+              <MenuItem fx:id="about_program" mnemonicParsing="false" onAction="#aboutProgram" text="Informacje o programie" />
+                  <MenuItem fx:id="about_BF" mnemonicParsing="false" onAction="#aboutBF" text="Informacje o Brute Force" />
+                  <MenuItem fx:id="about_GR" mnemonicParsing="false" onAction="#aboutGR" text="Informacje o Greedy" />
             </items>
           </Menu>
         </menus>

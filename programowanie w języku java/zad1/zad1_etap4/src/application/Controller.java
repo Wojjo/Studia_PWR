@@ -19,6 +19,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import zad1.Brute_force;
+import zad1.Greedy;
 import zad1.Instancja;
 import zad1.Wynik;
 
@@ -74,16 +76,51 @@ public class Controller implements Initializable {
 		}
 	}
 
-	public void enterDataButtonClicked() {
+	public void enterDataButtonClicked(ActionEvent event) throws IOException {
 		if (checkBoxBF.isSelected() && checkBoxGr.isSelected()) {
-			new Alert(Alert.AlertType.INFORMATION, "Wybrano BF i GR").showAndWait();
+			
+			AnchorPane enterData = (AnchorPane) FXMLLoader.load(getClass().getResource("EnterData.fxml"));
+			Scene scene = new Scene(enterData, 700, 400);
+			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+			window.setScene(scene);
+			window.show();
+			EnterDataController.setAlg(1, 1);
 		} else if (checkBoxBF.isSelected()) {
-			new Alert(Alert.AlertType.INFORMATION, "Wybrano BF").showAndWait();
+			
+			AnchorPane enterData = (AnchorPane) FXMLLoader.load(getClass().getResource("EnterData.fxml"));
+			Scene scene = new Scene(enterData, 700, 400);
+			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+			window.setScene(scene);
+			window.show();
+			EnterDataController.setAlg(1, 0);
 		} else if (checkBoxGr.isSelected()) {
-			new Alert(Alert.AlertType.INFORMATION, "Wybrano GR").showAndWait();
-		} else {
+			AnchorPane enterData = (AnchorPane) FXMLLoader.load(getClass().getResource("EnterData.fxml"));
+			Scene scene = new Scene(enterData, 700, 400);
+			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+			window.setScene(scene);
+			window.show();
+			EnterDataController.setAlg(0, 1);
+		}else {
 			new Alert(Alert.AlertType.INFORMATION, "Wybierz algorytm!").showAndWait();
 		}
+	}
+
+	public void aboutProgram() {
+		String version = "\n  Wersja 1.1";
+		new Alert(Alert.AlertType.INFORMATION,
+				"Program rozwi¹zuje problem plecakowy. \nDostêpne algorytmy: \n - Brute Force \n - Greedy \n\n Autor Programu: \n - Przemys³aw Wojcinowicz \n"
+						+ version).showAndWait();
+	}
+
+	public void aboutBF() {
+		Brute_force.info();
+	}
+
+	public void aboutGR() {
+		Greedy.info();
 	}
 
 	@Override

@@ -8,9 +8,7 @@ import java.util.Scanner;
 
 public class Instancja {
 	static ArrayList<Przedmiot> itemList;
-	private int numItems = 0;
-	private boolean[] solution;
-	private boolean[] current;
+	private static int numItems = 0;
 	private static int maxWeight;
 
 	public void readfile(String filename) throws FileNotFoundException {
@@ -20,7 +18,6 @@ public class Instancja {
 		itemList = new ArrayList<Przedmiot>();
 		numItems = sc.nextInt();
 
-		solution = new boolean[numItems];
 		for (int i = 0; i < numItems; i++) {
 			itemList.add(new Przedmiot(sc.nextInt(), sc.nextFloat(), sc.nextInt()));
 		}
@@ -28,22 +25,26 @@ public class Instancja {
 
 	}
 
-	public void enterData(int index, float value, int weight) {
+	public static void enterData(float value, int weight) {
 
 		numItems += 1;
-		itemList.add(new Przedmiot(index, value, weight));
+		itemList.add(new Przedmiot(numItems, value, weight));
 
+	}
+	
+	public void setmaxWeight()
+	{
+		
 	}
 
 	public void solveKnapsackProblem(String option) {
 
 		if (option.equals("Brute Force")) {
-			current = new boolean[numItems];
-			Brute_force bf = new Brute_force(maxWeight, solution, current, numItems);
+			Brute_force bf = new Brute_force(maxWeight, numItems);
 			bf.startAlgorithm();
 
 		} else if (option.equals("Greedy")) {
-			Greedy gr = new Greedy(maxWeight, solution, numItems);
+			Greedy gr = new Greedy(maxWeight, numItems);
 			gr.startAlgorithm();
 		}
 	}

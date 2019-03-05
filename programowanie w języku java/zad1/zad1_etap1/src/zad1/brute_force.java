@@ -1,5 +1,7 @@
 package zad1;
 
+import javafx.scene.control.Alert;
+
 public class Brute_force implements Interfejs {
 
 	private int maxWeight;
@@ -12,14 +14,13 @@ public class Brute_force implements Interfejs {
 	private int numItems;
 	private String algorithmName = "Brute Force";
 
-	public Brute_force(int maxWeight, boolean[] solution, boolean[] current, int numItems) {
+	public Brute_force(int maxWeight, int numItems) {
 		this.maxWeight = maxWeight;
-		this.solution = solution;
-		this.current = current;
 		this.numItems = numItems;
 	}
 
 	public void startAlgorithm() {
+		current = new boolean[numItems];
 		solution = new boolean[numItems];
 		algorithm(numItems - 1);
 		Wynik.printResult(algorithmName, curBestValue, curBestWeight, numItems, solution);
@@ -30,7 +31,6 @@ public class Brute_force implements Interfejs {
 		if (numSize < 0) {
 			curWeight = 0;
 			curValue = 0;
-
 			for (int i = 0; i < numItems; i++) {
 				if (current[i]) {
 					curWeight += Instancja.itemList.get(i).weight;
@@ -49,15 +49,18 @@ public class Brute_force implements Interfejs {
 		} else {
 			current[numSize] = true;
 			algorithm(numSize - 1);
+
 			current[numSize] = false;
 			algorithm(numSize - 1);
 
 		}
 
 	}
-	
-	public String info()
-	{
-		return "Metoda polegaj¹ca na analizie wszystkich potencjalnych rozwi¹zañ zadania w celu wybrania tego, które spe³nia warunki zadania";
+
+	public static void info() {
+
+		new Alert(Alert.AlertType.INFORMATION,
+				"Metoda polegaj¹ca na analizie wszystkich potencjalnych rozwi¹zañ zadania w celu wybrania tego, które spe³nia warunki zadania")
+						.showAndWait();
 	}
 }
