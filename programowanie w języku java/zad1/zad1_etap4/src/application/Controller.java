@@ -77,6 +77,7 @@ public class Controller implements Initializable {
 	}
 
 	public void enterDataButtonClicked(ActionEvent event) throws IOException {
+		Instancja.setItemList();
 		if (checkBoxBF.isSelected() && checkBoxGr.isSelected()) {
 			
 			AnchorPane enterData = (AnchorPane) FXMLLoader.load(getClass().getResource("EnterData.fxml"));

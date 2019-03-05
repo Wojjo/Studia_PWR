@@ -9,7 +9,7 @@
    <children>
       <Label layoutX="239.0" layoutY="143.0" text="Wprowadź nazwę pliku" />
       <TextField fx:id="readTextField" layoutX="226.0" layoutY="188.0" />
-      <Button fx:id="OKButton" layoutX="226.0" layoutY="276.0" mnemonicParsing="false" onAction="#OKButton" text="OK" />
-      <Button fx:id="CancleButton" layoutX="323.0" layoutY="276.0" mnemonicParsing="false" onAction="#cancleButton" text="Cancle" />
+      <Button fx:id="OKButtonClicked" layoutX="226.0" layoutY="276.0" mnemonicParsing="false" onAction="#OKButtonClicked" text="OK" />
+      <Button fx:id="CancleButton" layoutX="323.0" layoutY="276.0" mnemonicParsing="false" onAction="#cancleButtonClicked" text="Cancle" />
    </children>
 </AnchorPane>

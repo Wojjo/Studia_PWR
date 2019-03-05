@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javafx.scene.control.Alert;
+
 public class Instancja {
 	static ArrayList<Przedmiot> itemList;
 	private static int numItems = 0;
@@ -32,9 +34,14 @@ public class Instancja {
 
 	}
 	
-	public void setmaxWeight()
+	public static void setMaxWeight(int max)
 	{
-		
+		maxWeight = max;
+	}
+	
+	public static void setItemList()
+	{
+		itemList = new ArrayList<Przedmiot>();
 	}
 
 	public void solveKnapsackProblem(String option) {

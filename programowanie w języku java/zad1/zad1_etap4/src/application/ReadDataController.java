@@ -32,7 +32,7 @@ public class ReadDataController implements Initializable {
 
 	}
 
-	public void OKButton() {
+	public void OKButtonClicked() {
 		filename = readTextField.getText();
 		Instancja problem = new Instancja();
 
@@ -61,7 +61,7 @@ public class ReadDataController implements Initializable {
 
 	}
 
-	public void cancleButton() {
+	public void cancleButtonClicked() {
 		System.exit(0);
 	}
 
