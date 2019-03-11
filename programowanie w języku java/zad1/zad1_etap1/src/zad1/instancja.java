@@ -1,6 +1,7 @@
 package zad1;
 
 import java.io.File;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.Scanner;
 import javafx.scene.control.Alert;
 
 public class Instancja {
-	static ArrayList<Przedmiot> itemList;
+	public static ArrayList<Przedmiot> itemList;
 	private static int numItems = 0;
 	private static int maxWeight;
 

@@ -1,7 +1,5 @@
 package application;
 
-import java.io.FileNotFoundException;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -11,29 +9,32 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import zad1.Brute_force;
 import zad1.Greedy;
 import zad1.Instancja;
-import zad1.Wynik;
 
 public class Controller implements Initializable {
-	@FXML
-	CheckBox checkBoxBF;
-	@FXML
-	CheckBox checkBoxGr;
-	@FXML
-	TextField readTextField;
+	@FXML CheckBox checkBoxBF;
+	@FXML CheckBox checkBoxGr;
+	@FXML TextField readTextField;
+	@FXML Button enterDataButton;
+	@FXML Button readDataButton;
+	@FXML Button exitButton;
+	@FXML MenuItem about_program;
+	@FXML MenuItem about_BF;
+	@FXML MenuItem about_GR;
+	@FXML MenuItem language;
+	
 
 	String filename;
-
 	String algorithm;
 
 	public void exitButtonClicked() {
@@ -110,10 +111,11 @@ public class Controller implements Initializable {
 	}
 
 	public void aboutProgram() {
+		FXMLLoader loader = new FXMLLoader();
+		ResourceBundle bundles = ResourceBundle.getBundle("Language_pl_PL");
+		loader.setResources(bundles);
 		String version = "\n  Wersja 1.1";
-		new Alert(Alert.AlertType.INFORMATION,
-				"Program rozwi¹zuje problem plecakowy. \nDostêpne algorytmy: \n - Brute Force \n - Greedy \n\n Autor Programu: \n - Przemys³aw Wojcinowicz \n"
-						+ version).showAndWait();
+		new Alert(Alert.AlertType.INFORMATION,bundles.getString("program.info") + version).showAndWait();
 	}
 
 	public void aboutBF() {
@@ -125,8 +127,12 @@ public class Controller implements Initializable {
 	}
 
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
+	public void initialize(URL arg0, ResourceBundle bundles)
+	{
+		FXMLLoader loader = new FXMLLoader();
+		bundles = ResourceBundle.getBundle("Language_pl_PL");
+		loader.setResources(bundles);
+		
 
 	}
 

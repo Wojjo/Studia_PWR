@@ -31,6 +31,7 @@ public class Brute_force implements Interfejs {
 		if (numSize < 0) {
 			curWeight = 0;
 			curValue = 0;
+			// liczenie waga oraz wartosci
 			for (int i = 0; i < numItems; i++) {
 				if (current[i]) {
 					curWeight += Instancja.itemList.get(i).weight;
@@ -38,7 +39,8 @@ public class Brute_force implements Interfejs {
 
 				}
 			}
-
+			// jesli waga jest mniejsza od maksymalnej oraz nowa wartosc jest wieksza od aktualnej 
+			// ustawia nowa wage i wartosc jako dotychczasowe najlepsze 
 			if (curWeight <= maxWeight && curValue > curBestValue) {
 				curBestValue = curValue;
 				curBestWeight = curWeight;
@@ -47,9 +49,10 @@ public class Brute_force implements Interfejs {
 				}
 			}
 		} else {
+			// zaznaczanie ze przedmiot zostal spakowany 
 			current[numSize] = true;
 			algorithm(numSize - 1);
-
+			// zaznaczanie ze przedmiot nie zostal spakowany
 			current[numSize] = false;
 			algorithm(numSize - 1);
 

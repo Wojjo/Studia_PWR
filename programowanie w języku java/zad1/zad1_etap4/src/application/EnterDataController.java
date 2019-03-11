@@ -1,38 +1,43 @@
 package application;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
+import javafx.scene.control.cell.PropertyValueFactory;
 import zad1.Instancja;
 import zad1.Przedmiot;
 
-public class EnterDataController
+public class EnterDataController implements Initializable
 {
+	@FXML Button addItemButton;
+	@FXML Button deleteItemButton;
+	@FXML Button backButton;
+	@FXML Button doButton;
+	@FXML Button setWeightButton;
+	
+	
+	
 	static String algorithm = "brak";
 	static String algorithm2 = "brak";
 	String maxWeightField;
 	int maxWeight;
 	float value;
 	int weight;
+	int index=0;
 
 	@FXML private TextField maxWeightTextField;
 	@FXML private TextField valueTextField;
 	@FXML private TextField weightTextField;
 	@FXML private TableView<Przedmiot> tableView;
-	@FXML private TableColumn<Przedmiot, String> indexColumn;
-	@FXML private TableColumn<Przedmiot, String> valueColumn;
-	@FXML private TableColumn<Przedmiot, String> weightColumn;
+	@FXML private TableColumn<Przedmiot, Integer> indexColumn;
+	@FXML private TableColumn<Przedmiot, Float> valueColumn;
+	@FXML private TableColumn<Przedmiot, Integer> weightColumn;
 	
 	
 	public static void setAlg(int alg1, int alg2) {
@@ -57,11 +62,11 @@ public class EnterDataController
 	
 	public void addItemButtonClicked()
 	{
-		
-		
-		//tableView.getItems().add(newItem);
+		index +=1;		
 		value = Float.parseFloat(valueTextField.getText());
 		weight = Integer.parseInt(weightTextField.getText());	
+		Przedmiot addItem = new Przedmiot(index, value, weight);
+		tableView.getItems().add(addItem);
 		Instancja.enterData(value, weight);
 	}
 	
@@ -82,6 +87,16 @@ public class EnterDataController
 
 		}
 
+	}
+	
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1)
+	{
+		indexColumn.setCellValueFactory(new PropertyValueFactory<Przedmiot, Integer>("index"));
+        valueColumn.setCellValueFactory(new PropertyValueFactory<Przedmiot, Float>("value"));
+        weightColumn.setCellValueFactory(new PropertyValueFactory<Przedmiot, Integer>("weight"));
+           
 	}
 	
 
