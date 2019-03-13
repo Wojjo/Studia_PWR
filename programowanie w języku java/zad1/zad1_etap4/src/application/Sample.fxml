@@ -16,14 +16,19 @@
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="Pomoc">
+          <Menu mnemonicParsing="false" text="%menu.bar">
             <items>
-              <MenuItem fx:id="about_program" mnemonicParsing="false" onAction="#aboutProgram" text="Informacje o programie" />
-                  <MenuItem fx:id="about_BF" mnemonicParsing="false" onAction="#aboutBF" text="Informacje o Brute Force" />
-                  <MenuItem fx:id="about_GR" mnemonicParsing="false" onAction="#aboutGR" text="Informacje o Greedy" />
-                  <MenuItem fx:id="language" mnemonicParsing="false" text="Jezyk" />
+              <MenuItem fx:id="about_program" mnemonicParsing="false" onAction="#aboutProgram" text="%menu.bar2" />
+                  <MenuItem fx:id="about_BF" mnemonicParsing="false" onAction="#aboutBF" text="%menu.bar3" />
+                  <MenuItem fx:id="about_GR" mnemonicParsing="false" onAction="#aboutGR" text="%menu.bar4" />
             </items>
           </Menu>
+            <Menu fx:id="language" mnemonicParsing="false" text="%menu.bar5">
+               <items>
+                  <MenuItem fx:id="polish" mnemonicParsing="false" onAction="#polishLanguage" text="%menu.bar6" />
+                  <MenuItem fx:id="english" mnemonicParsing="false" onAction="#englishLanguage" text="%menu.bar7" />
+               </items>
+            </Menu>
         </menus>
       </MenuBar>
    </top>
@@ -32,9 +37,9 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Button fx:id="enterDataButton" layoutX="59.0" layoutY="261.0" mnemonicParsing="false" onAction="#enterDataButtonClicked" text="Wprowadź dane ręcznie" />
-                  <Button fx:id="readDataButton" layoutX="259.0" layoutY="261.0" mnemonicParsing="false" onAction="#readDataButtonClicked" text="Wczytaj dane z pliku" />
-                  <Button fx:id="exitButton" layoutX="442.0" layoutY="261.0" mnemonicParsing="false" onAction="#exitButtonClicked" text="Wyjście" />
+                  <Button fx:id="enterDataButton" layoutX="59.0" layoutY="261.0" mnemonicParsing="false" onAction="#enterDataButtonClicked" text="%button1" />
+                  <Button fx:id="readDataButton" layoutX="259.0" layoutY="261.0" mnemonicParsing="false" onAction="#readDataButtonClicked" text="%button2" />
+                  <Button fx:id="exitButton" layoutX="442.0" layoutY="261.0" mnemonicParsing="false" onAction="#exitButtonClicked" text="%button3" />
                   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="397.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <image>
                         <Image url="@../../robot.jpg" />
@@ -43,7 +48,7 @@
                   <Label layoutX="14.0" layoutY="342.0" text="Wersja 1.1" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                   <CheckBox fx:id="checkBoxBF" layoutX="9.0" layoutY="30.0" mnemonicParsing="false" text="Brute Force" />
                   <CheckBox fx:id="checkBoxGr" layoutX="9.0" layoutY="62.0" mnemonicParsing="false" text="Greedy" />
-                  <Label layoutX="9.0" layoutY="6.0" text="Wybierz algorytm" />
+                  <Label layoutX="9.0" layoutY="6.0" text="%labelField" />
                </children>
             </AnchorPane>
         </items>

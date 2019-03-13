@@ -1,5 +1,3 @@
 eclipse.preferences.version=1
-encoding//bundles/Language_en_US.properties=UTF-8
-encoding//bundles/Language_pl_PL.properties=UTF-8
+encoding//bundles/lang_pl_PL.properties=UTF-8
 encoding/<project>=UTF-8
-encoding/bundles=UTF-8

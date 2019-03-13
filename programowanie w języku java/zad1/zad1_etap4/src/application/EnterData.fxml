@@ -11,17 +11,17 @@
       <TableView fx:id="tableView" layoutX="10.0" layoutY="26.0" prefHeight="200.0" prefWidth="248.0">
         <columns>
           <TableColumn fx:id="indexColumn" prefWidth="75.0" text="Index" />
-          <TableColumn fx:id="valueColumn" prefWidth="75.0" text="Wartość" />
-            <TableColumn fx:id="weightColumn" prefWidth="75.0" text="Waga" />
+          <TableColumn fx:id="valueColumn" prefWidth="75.0" text="%valueColumn" />
+            <TableColumn fx:id="weightColumn" prefWidth="75.0" text="%weightColumn" />
         </columns>
       </TableView>
-      <TextField fx:id="valueTextField" layoutX="279.0" layoutY="26.0" promptText="Wartość przedmiotu" />
-      <TextField fx:id="weightTextField" layoutX="278.0" layoutY="70.0" promptText="Waga przedmiotu" />
-      <Button fx:id="addItemButton" layoutX="492.0" layoutY="26.0" mnemonicParsing="false" onAction="#addItemButtonClicked" text="Dodaj przedmiot" />
-      <Button fx:id="deleteItemButton" layoutX="495.0" layoutY="70.0" mnemonicParsing="false" text="Usuń przedmiot" />
-      <Button fx:id="backButton" layoutX="352.0" layoutY="319.0" mnemonicParsing="false" text="Powrót" />
-      <Button fx:id="doButton" layoutX="247.0" layoutY="319.0" mnemonicParsing="false" onAction="#DoButtonClicked" text="Wykonaj" />
-      <TextField fx:id="maxWeightTextField" layoutX="278.0" layoutY="113.0" promptText="Max waga plecaka" />
-      <Button fx:id="setWeightButton" layoutX="473.0" layoutY="113.0" mnemonicParsing="false" onAction="#setMaxWeightButtonClicked" text="Ustaw wagę plecaka" />
+      <TextField fx:id="valueTextField" layoutX="279.0" layoutY="26.0" promptText="%textField1" />
+      <TextField fx:id="weightTextField" layoutX="278.0" layoutY="70.0" promptText="%textField2" />
+      <Button fx:id="addItemButton" layoutX="492.0" layoutY="26.0" mnemonicParsing="false" onAction="#addItemButtonClicked" text="%button.enter1" />
+      <Button fx:id="deleteItemButton" layoutX="495.0" layoutY="70.0" mnemonicParsing="false" text="%button.enter2" />
+      <Button fx:id="backButton" layoutX="352.0" layoutY="319.0" mnemonicParsing="false" text="%button.enter5" />
+      <Button fx:id="doButton" layoutX="247.0" layoutY="319.0" mnemonicParsing="false" onAction="#DoButtonClicked" text="%button.enter4" />
+      <TextField fx:id="maxWeightTextField" layoutX="278.0" layoutY="113.0" promptText="%textField3" />
+      <Button fx:id="setWeightButton" layoutX="473.0" layoutY="113.0" mnemonicParsing="false" onAction="#setMaxWeightButtonClicked" text="%button.enter3" />
    </children>
 </AnchorPane>

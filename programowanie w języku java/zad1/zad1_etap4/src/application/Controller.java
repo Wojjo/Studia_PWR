@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -9,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -36,6 +38,7 @@ public class Controller implements Initializable {
 
 	String filename;
 	String algorithm;
+	String choose="pl_PL";
 
 	public void exitButtonClicked() {
 		System.exit(0);
@@ -43,34 +46,16 @@ public class Controller implements Initializable {
 
 	public void readDataButtonClicked(ActionEvent event) throws IOException {
 		if (checkBoxBF.isSelected() && checkBoxGr.isSelected()) {
-			AnchorPane enterData = (AnchorPane) FXMLLoader.load(getClass().getResource("ReadData.fxml"));
-			Scene scene = new Scene(enterData, 600, 400);
-			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-			window.setScene(scene);
-			window.show();
-
+			showReadDataView(event);
 			ReadDataController.setAlg(1, 1);
 
 		} else if (checkBoxBF.isSelected()) {
 
-			AnchorPane enterData = (AnchorPane) FXMLLoader.load(getClass().getResource("ReadData.fxml"));
-			Scene scene = new Scene(enterData, 600, 400);
-			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-			window.setScene(scene);
-			window.show();
-
+			showReadDataView(event);
 			ReadDataController.setAlg(1, 0);
 
 		} else if (checkBoxGr.isSelected()) {
-			AnchorPane enterData = (AnchorPane) FXMLLoader.load(getClass().getResource("ReadData.fxml"));
-			Scene scene = new Scene(enterData, 600, 400);
-			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-			window.setScene(scene);
-			window.show();
-
+			showReadDataView(event);
 			ReadDataController.setAlg(0, 1);
 		} else {
 			new Alert(Alert.AlertType.INFORMATION, "Wybierz algorytm!").showAndWait();
@@ -79,43 +64,68 @@ public class Controller implements Initializable {
 
 	public void enterDataButtonClicked(ActionEvent event) throws IOException {
 		Instancja.setItemList();
-		if (checkBoxBF.isSelected() && checkBoxGr.isSelected()) {
-			
-			AnchorPane enterData = (AnchorPane) FXMLLoader.load(getClass().getResource("EnterData.fxml"));
-			Scene scene = new Scene(enterData, 700, 400);
-			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-			window.setScene(scene);
-			window.show();
+		if (checkBoxBF.isSelected() && checkBoxGr.isSelected()) 
+		{
+			showEnterDataView(event);
 			EnterDataController.setAlg(1, 1);
 		} else if (checkBoxBF.isSelected()) {
 			
-			AnchorPane enterData = (AnchorPane) FXMLLoader.load(getClass().getResource("EnterData.fxml"));
-			Scene scene = new Scene(enterData, 700, 400);
-			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-			window.setScene(scene);
-			window.show();
+			showEnterDataView(event);
 			EnterDataController.setAlg(1, 0);
 		} else if (checkBoxGr.isSelected()) {
-			AnchorPane enterData = (AnchorPane) FXMLLoader.load(getClass().getResource("EnterData.fxml"));
-			Scene scene = new Scene(enterData, 700, 400);
-			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-			window.setScene(scene);
-			window.show();
+			showEnterDataView(event);
 			EnterDataController.setAlg(0, 1);
 		}else {
+			
 			new Alert(Alert.AlertType.INFORMATION, "Wybierz algorytm!").showAndWait();
 		}
 	}
+	public void showEnterDataView(ActionEvent event) throws IOException
+	{
+		Locale.setDefault(new Locale(choose));
+		ResourceBundle bundle = ResourceBundle.getBundle("lang");
+		AnchorPane enterData = (AnchorPane) FXMLLoader.load(getClass().getResource("EnterData.fxml"), bundle);
+		Scene scene = new Scene(enterData, 700, 400);
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+		window.setScene(scene);
+		window.show();
+	}
+	
+	public void showReadDataView(ActionEvent event) throws IOException
+	{
+		Locale.setDefault(new Locale(choose));
+		ResourceBundle bundle = ResourceBundle.getBundle("lang");
+		AnchorPane enterData = (AnchorPane) FXMLLoader.load(getClass().getResource("ReadData.fxml"), bundle);
+		Scene scene = new Scene(enterData, 600, 400);
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+		window.setScene(scene);
+		window.show();
+
+	}
+	
+	public void englishLanguage(ActionEvent event) throws IOException
+	{
+		choose ="en_US";
+		
+	}
+	
+	public void polishLanguage()
+	{
+		choose ="pl_PL";
+		
+	}
+	
+	
+	
 
 	public void aboutProgram() {
-		FXMLLoader loader = new FXMLLoader();
-		ResourceBundle bundles = ResourceBundle.getBundle("Language_pl_PL");
-		loader.setResources(bundles);
-		String version = "\n  Wersja 1.1";
-		new Alert(Alert.AlertType.INFORMATION,bundles.getString("program.info") + version).showAndWait();
+		//FXMLLoader loader = new FXMLLoader();
+		///ResourceBundle bundles = ResourceBundle.getBundle("Language_pl_PL");
+		//loader.setResources(bundles);
+		//String version = "\n  Wersja 1.1";
+		//new Alert(Alert.AlertType.INFORMATION,bundles.getString("program.info") + version).showAndWait();
 	}
 
 	public void aboutBF() {
@@ -127,12 +137,10 @@ public class Controller implements Initializable {
 	}
 
 	@Override
-	public void initialize(URL arg0, ResourceBundle bundles)
+	public void initialize(URL arg0, ResourceBundle bundle)
 	{
-		FXMLLoader loader = new FXMLLoader();
-		bundles = ResourceBundle.getBundle("Language_pl_PL");
-		loader.setResources(bundles);
-		
+		Locale.setDefault(new Locale("en_US"));
+		bundle = ResourceBundle.getBundle("lang");
 
 	}
 

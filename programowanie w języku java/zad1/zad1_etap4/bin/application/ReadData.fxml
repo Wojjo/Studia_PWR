@@ -7,9 +7,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ReadDataController">
    <children>
-      <Label layoutX="239.0" layoutY="143.0" text="Wprowadź nazwę pliku" />
+      <Label layoutX="238.0" layoutY="153.0" text="%labelField.read1" />
       <TextField fx:id="readTextField" layoutX="226.0" layoutY="188.0" />
       <Button fx:id="OKButtonClicked" layoutX="226.0" layoutY="276.0" mnemonicParsing="false" onAction="#OKButtonClicked" text="OK" />
-      <Button fx:id="CancleButton" layoutX="323.0" layoutY="276.0" mnemonicParsing="false" onAction="#cancleButtonClicked" text="Cancle" />
+      <Button fx:id="CancleButton" layoutX="323.0" layoutY="276.0" mnemonicParsing="false" onAction="#cancleButtonClicked" text="%button.enter5" />
    </children>
 </AnchorPane>

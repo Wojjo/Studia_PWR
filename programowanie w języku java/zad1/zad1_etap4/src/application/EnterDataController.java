@@ -1,15 +1,24 @@
 package application;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import zad1.Instancja;
 import zad1.Przedmiot;
 
@@ -89,10 +98,11 @@ public class EnterDataController implements Initializable
 
 	}
 	
-	
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1)
+	public void initialize(URL arg0, ResourceBundle bundle)
 	{
+		Locale.setDefault(new Locale("en_US"));
+		bundle = ResourceBundle.getBundle("lang");
 		indexColumn.setCellValueFactory(new PropertyValueFactory<Przedmiot, Integer>("index"));
         valueColumn.setCellValueFactory(new PropertyValueFactory<Przedmiot, Float>("value"));
         weightColumn.setCellValueFactory(new PropertyValueFactory<Przedmiot, Integer>("weight"));
