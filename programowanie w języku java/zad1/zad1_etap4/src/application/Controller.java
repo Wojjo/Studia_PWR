@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,12 +19,13 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import zad1.Brute_force;
 import zad1.Greedy;
 import zad1.Instancja;
 
-public class Controller implements Initializable {
+public class Controller  {
 	@FXML CheckBox checkBoxBF;
 	@FXML CheckBox checkBoxGr;
 	@FXML TextField readTextField;
@@ -38,7 +40,7 @@ public class Controller implements Initializable {
 
 	String filename;
 	String algorithm;
-	String choose="pl_PL";
+	static String choose="pl_PL";
 
 	public void exitButtonClicked() {
 		System.exit(0);
@@ -58,7 +60,9 @@ public class Controller implements Initializable {
 			showReadDataView(event);
 			ReadDataController.setAlg(0, 1);
 		} else {
-			new Alert(Alert.AlertType.INFORMATION, "Wybierz algorytm!").showAndWait();
+			ResourceBundle b = Main.getBundle();
+			new Alert(Alert.AlertType.INFORMATION,b.getString("alert1")).showAndWait();
+			
 		}
 	}
 
@@ -76,8 +80,8 @@ public class Controller implements Initializable {
 			showEnterDataView(event);
 			EnterDataController.setAlg(0, 1);
 		}else {
-			
-			new Alert(Alert.AlertType.INFORMATION, "Wybierz algorytm!").showAndWait();
+			ResourceBundle b = Main.getBundle();
+			new Alert(Alert.AlertType.INFORMATION,b.getString("alert1")).showAndWait();
 		}
 	}
 	public void showEnterDataView(ActionEvent event) throws IOException
@@ -107,41 +111,41 @@ public class Controller implements Initializable {
 	
 	public void englishLanguage(ActionEvent event) throws IOException
 	{
-		choose ="en_US";
 		
+		Stage s = Main.getPrimaryStage();
+		s.close();
+		choose ="en_US";
+		Main.setLang(choose);
+		Platform.runLater( () -> new Main().start( new Stage() ) );
+	
 	}
 	
 	public void polishLanguage()
 	{
+		Stage s = Main.getPrimaryStage();
+		s.close();
 		choose ="pl_PL";
+		Main.setLang(choose);
+		Platform.runLater( () -> new Main().start( new Stage() ) );
 		
 	}
 	
 	
-	
-
-	public void aboutProgram() {
-		//FXMLLoader loader = new FXMLLoader();
-		///ResourceBundle bundles = ResourceBundle.getBundle("Language_pl_PL");
-		//loader.setResources(bundles);
-		//String version = "\n  Wersja 1.1";
-		//new Alert(Alert.AlertType.INFORMATION,bundles.getString("program.info") + version).showAndWait();
+	public void aboutProgram(ActionEvent event) {
+		ResourceBundle b = Main.getBundle();
+		String version = " 1.2";
+		new Alert(Alert.AlertType.INFORMATION,b.getString("program.info") + version).showAndWait();
 	}
 
 	public void aboutBF() {
-		Brute_force.info();
+		ResourceBundle b = Main.getBundle();
+		new Alert(Alert.AlertType.INFORMATION,b.getString("program.info2")).showAndWait();
 	}
 
 	public void aboutGR() {
-		Greedy.info();
+		ResourceBundle b = Main.getBundle();
+		new Alert(Alert.AlertType.INFORMATION,b.getString("program.info3")).showAndWait();
 	}
 
-	@Override
-	public void initialize(URL arg0, ResourceBundle bundle)
-	{
-		Locale.setDefault(new Locale("en_US"));
-		bundle = ResourceBundle.getBundle("lang");
-
-	}
 
 }
