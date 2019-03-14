@@ -1,8 +1,11 @@
+/**
+ * Klasa ta pozwala rozwi¹zaæ problem plecakowy metod¹ zach³annym
+ * @author Przemys³aw Wojcinowicz
+ */
 package zad1;
 
 import java.util.ArrayList;
-
-import javafx.scene.control.Alert;
+import java.util.ResourceBundle;
 
 public class Greedy implements Interfejs {
 	ArrayList<Przedmiot> orderedList = new ArrayList<Przedmiot>();
@@ -17,17 +20,28 @@ public class Greedy implements Interfejs {
 	private boolean added;
 	private String algorithmName = "Greedy";
 
+
 	public Greedy(int maxWeight, int numItems) {
 		this.maxWeight = maxWeight;
 		this.numItems = numItems;
 	}
-
-	public void startAlgorithm() {
+/**
+ * Metoda:
+ * inicjalizuje tablicê dla rozwiazania,
+ * wywo³uje metodê algorytm, która rozwi¹zuje problem plecakowy,
+ * wywo³uje metodê, która wyœwietla wynik rozwi¹zania.
+ * @param bundle przechowuje informacjê jaki jêzyk zosta³ wybrany 
+ */
+	public void startAlgorithm(ResourceBundle bundle) {
 		solution = new boolean[numItems];
 		algorithm(numItems);
-		Wynik.printResult(algorithmName, curValue, curWeight, numItems, solution);
+		Wynik.printResult(algorithmName, curValue, curWeight, numItems, solution, bundle);
 
 	}
+	/**
+	 * Metoda rozwi¹zuje problem plecakowy metod¹ zach³ann¹ 
+	 * @param numSize przechowuje iloœæ wszystkich przedmiotów 
+	 */
 
 	public void algorithm(int numSize) {
 		curWeight = 0;
@@ -75,12 +89,6 @@ public class Greedy implements Interfejs {
 			}
 
 		}
-	}
-
-	public static void info() {
-		new Alert(Alert.AlertType.INFORMATION,
-				"Algorytm podejmuje w ka¿dym kroku tak¹ decyzjê, która w danej chwili wydaje siê najkorzystniejsza.")
-						.showAndWait();
 	}
 
 }

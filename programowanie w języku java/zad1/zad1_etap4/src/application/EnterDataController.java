@@ -115,14 +115,14 @@ public class EnterDataController implements Initializable {
 			Instancja problem = new Instancja();
 
 			if (algorithm.equals("Brute Force")) {
-
-				problem.solveKnapsackProblem(algorithm);
+				ResourceBundle b = Main.getBundle();
+				problem.solveKnapsackProblem(algorithm,b);
 
 			}
 
 			if (algorithm2.equals("Greedy")) {
-
-				problem.solveKnapsackProblem(algorithm2);
+				ResourceBundle b = Main.getBundle();
+				problem.solveKnapsackProblem(algorithm2,b);
 
 			}
 		}
@@ -136,8 +136,7 @@ public class EnterDataController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle bundle) {
-		Locale.setDefault(new Locale("en_US"));
-		bundle = ResourceBundle.getBundle("lang");
+
 		indexColumn.setCellValueFactory(new PropertyValueFactory<Przedmiot, Integer>("index"));
 		valueColumn.setCellValueFactory(new PropertyValueFactory<Przedmiot, Float>("value"));
 		weightColumn.setCellValueFactory(new PropertyValueFactory<Przedmiot, Integer>("weight"));

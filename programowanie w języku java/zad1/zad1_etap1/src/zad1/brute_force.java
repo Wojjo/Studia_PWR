@@ -1,6 +1,11 @@
+/**
+ * Klasa ta pozwala rozwi¹zaæ problem plecakowy metod¹ si³ow¹
+ * @author Przemys³aw Wojcinowicz
+ */
 package zad1;
 
-import javafx.scene.control.Alert;
+import java.util.ResourceBundle;
+
 
 public class Brute_force implements Interfejs {
 
@@ -19,14 +24,25 @@ public class Brute_force implements Interfejs {
 		this.numItems = numItems;
 	}
 
-	public void startAlgorithm() {
+	/**
+	 * Metoda:
+	 * inicjalizuje tablice dla znalezionego obecnego rozwi¹zania,
+	 * inicjalizuje tablice dla znalezionego najlepszego rozwi¹zania, 
+	 * wywo³uje metodê rozwi¹zuj¹c¹ problem,
+	 * wywo³uje metodê, która wyœwietla wynik rozwi¹zania,
+	 * @param bundle przechowuje informacjê jaki jêzyk zosta³ wybrany 
+	 */
+	public void startAlgorithm(ResourceBundle bundle) {
 		current = new boolean[numItems];
 		solution = new boolean[numItems];
 		algorithm(numItems - 1);
-		Wynik.printResult(algorithmName, curBestValue, curBestWeight, numItems, solution);
+		Wynik.printResult(algorithmName, curBestValue, curBestWeight, numItems, solution, bundle);
 
 	}
-
+	/**
+	 * Metoda rozwi¹zuje problem plecakowy metod¹ zach³ann¹ 
+	 * @param numSize przechowuje iloœæ wszystkich przedmiotów 
+	 */	 
 	public void algorithm(int numSize) {
 		if (numSize < 0) {
 			curWeight = 0;
@@ -60,10 +76,4 @@ public class Brute_force implements Interfejs {
 
 	}
 
-	public static void info() {
-
-		new Alert(Alert.AlertType.INFORMATION,
-				"Metoda polegaj¹ca na analizie wszystkich potencjalnych rozwi¹zañ zadania w celu wybrania tego, które spe³nia warunki zadania")
-						.showAndWait();
-	}
 }

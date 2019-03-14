@@ -42,8 +42,9 @@ public class ReadDataController implements Initializable {
 		if (algorithm.equals("Brute Force")) {
 
 			try {
+				ResourceBundle b = Main.getBundle();
 				problem.readfile(filename);
-				problem.solveKnapsackProblem(algorithm);
+				problem.solveKnapsackProblem(algorithm,b);
 
 			} catch (FileNotFoundException e) {
 				System.out.println("ERROR: File not found.");
@@ -54,8 +55,9 @@ public class ReadDataController implements Initializable {
 		if (algorithm2.equals("Greedy")) {
 
 			try {
+				ResourceBundle b = Main.getBundle();
 				problem.readfile(filename);
-				problem.solveKnapsackProblem(algorithm2);
+				problem.solveKnapsackProblem(algorithm2,b);
 
 			} catch (FileNotFoundException e) {
 				System.out.println("ERROR: File not found.");
