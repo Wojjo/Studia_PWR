@@ -26,6 +26,19 @@ public class Przedmiot
 		this.value=value;
 		this.weight=weight;
 	}
+	public int getIndex()
+	{
+		return index;
+	}
 	
+	public float getValue()
+	{
+		return value;
+	}
+	
+	public int getWeight()
+	{
+		return weight;
+	}
 
 }

@@ -15,7 +15,7 @@ import javafx.fxml.FXMLLoader;
 public class Main extends Application {
 
 	private static Stage primaryStage;
-	static String language="pl_PL";
+	static String language="PL";
 	static ResourceBundle bundle;
 	
 	public static Stage getPrimaryStage()
