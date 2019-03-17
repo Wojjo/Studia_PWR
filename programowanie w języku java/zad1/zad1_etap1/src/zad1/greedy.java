@@ -20,27 +20,36 @@ public class Greedy implements Interfejs {
 	private boolean added;
 	private String algorithmName = "Greedy";
 
+	/**
+	 * Kontruktor inicjalizuje nastêpuj¹ce zmienne
+	 * 
+	 * @param maxWeight przechowuje maksymalna wage plecaka
+	 * @param numItems  przechowuje iloœæ wszystkich przedmiotów
+	 */
 
 	public Greedy(int maxWeight, int numItems) {
 		this.maxWeight = maxWeight;
 		this.numItems = numItems;
 	}
-/**
- * Metoda:
- * inicjalizuje tablicê dla rozwiazania,
- * wywo³uje metodê algorytm, która rozwi¹zuje problem plecakowy,
- * wywo³uje metodê, która wyœwietla wynik rozwi¹zania.
- * @param bundle przechowuje informacjê jaki jêzyk zosta³ wybrany 
- */
+
+	/**
+	 * Metoda: inicjalizuje tablicê dla rozwiazania, wywo³uje metodê algorytm, która
+	 * rozwi¹zuje problem plecakowy, wywo³uje metodê, która wyœwietla wynik
+	 * rozwi¹zania.
+	 * 
+	 * @param bundle przechowuje informacjê jaki jêzyk zosta³ wybrany
+	 */
 	public void startAlgorithm(ResourceBundle bundle) {
 		solution = new boolean[numItems];
 		algorithm(numItems);
 		Wynik.printResult(algorithmName, curValue, curWeight, numItems, solution, bundle);
 
 	}
+
 	/**
-	 * Metoda rozwi¹zuje problem plecakowy metod¹ zach³ann¹ 
-	 * @param numSize przechowuje iloœæ wszystkich przedmiotów 
+	 * Metoda rozwi¹zuje problem plecakowy metod¹ zach³ann¹
+	 * 
+	 * @param numSize przechowuje iloœæ wszystkich przedmiotów
 	 */
 
 	public void algorithm(int numSize) {

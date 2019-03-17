@@ -1,6 +1,5 @@
 package application;
 
-import java.io.IOException;
 import java.net.URL;
 import java.text.ChoiceFormat;
 import java.text.Format;
@@ -9,13 +8,9 @@ import java.text.NumberFormat;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import javafx.event.ActionEvent;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,24 +18,17 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import zad1.Instancja;
 import zad1.Przedmiot;
 
 public class EnterDataController implements Initializable {
-	@FXML
-	Button addItemButton;
-	@FXML
-	Button deleteItemButton;
-	@FXML
-	Button backButton;
-	@FXML
-	Button doButton;
-	@FXML
-	Button setWeightButton;
-	@FXML
-	Label itemLabel;
+	@FXML Button addItemButton;
+	@FXML Button deleteItemButton;
+	@FXML Button backButton;
+	@FXML Button doButton;
+	@FXML Button setWeightButton;
+	@FXML Label itemLabel;
 
 	static String algorithm = "brak";
 	static String algorithm2 = "brak";
@@ -79,12 +67,10 @@ public class EnterDataController implements Initializable {
 			if (maxWeight > 0) {
 				Instancja.setMaxWeight(maxWeight);
 			} else {
-				ResourceBundle b = Main.getBundle();
-				new Alert(Alert.AlertType.INFORMATION, b.getString("alert2")).showAndWait();
+				new Alert(Alert.AlertType.INFORMATION, bundle.getString("alert2")).showAndWait();
 			}
 		} else {
-			ResourceBundle b = Main.getBundle();
-			new Alert(Alert.AlertType.INFORMATION, b.getString("alert2")).showAndWait();
+			new Alert(Alert.AlertType.INFORMATION, bundle.getString("alert2")).showAndWait();
 		}
 
 	}
@@ -102,12 +88,10 @@ public class EnterDataController implements Initializable {
 				Instancja.enterData(value, weight);
 				showLabel(); 
 			} else {
-				ResourceBundle b = Main.getBundle();
-				new Alert(Alert.AlertType.INFORMATION, b.getString("alert3")).showAndWait();
+				new Alert(Alert.AlertType.INFORMATION, bundle.getString("alert3")).showAndWait();
 			}
 		} else {
-			ResourceBundle b = Main.getBundle();
-			new Alert(Alert.AlertType.INFORMATION, b.getString("alert3")).showAndWait();
+			new Alert(Alert.AlertType.INFORMATION, bundle.getString("alert3")).showAndWait();
 		}
 
 	}
@@ -117,23 +101,27 @@ public class EnterDataController implements Initializable {
 			Instancja problem = new Instancja();
 
 			if (algorithm.equals("Brute Force")) {
-				ResourceBundle b = Main.getBundle();
-				problem.solveKnapsackProblem(algorithm,b);
+				problem.solveKnapsackProblem(algorithm, bundle);
 
 			}
 
 			if (algorithm2.equals("Greedy")) {
-				ResourceBundle b = Main.getBundle();
-				problem.solveKnapsackProblem(algorithm2,b);
+				problem.solveKnapsackProblem(algorithm2,bundle);
 
 			}
 		}
 
 		else {
-			ResourceBundle b = Main.getBundle();
-			new Alert(Alert.AlertType.INFORMATION, b.getString("alert4")).showAndWait();
+			new Alert(Alert.AlertType.INFORMATION, bundle.getString("alert4")).showAndWait();
 		}
 
+	}
+	
+	public void backButtonClicked()
+	{
+		Stage s = Main.getPrimaryStage();
+		s.close();
+		Platform.runLater(() -> new Main().start(new Stage()));
 	}
 	
 	 private void showLabel() {
@@ -144,12 +132,12 @@ public class EnterDataController implements Initializable {
 	        double[] fileLimits = {0, 1, 2, 3, 4, 5};
 	        String[] fileStrings = 
 	        {
-	                bundle.getString("noItems"),
-	                bundle.getString("oneItem"),
-	                bundle.getString("2-4items"),
-	                bundle.getString("2-4items"),
-	                bundle.getString("2-4items"),
-	                bundle.getString("multipleItems")
+	                bundle.getString("no_items"),
+	                bundle.getString("one_item"),
+	                bundle.getString("2-4_items"),
+	                bundle.getString("2-4_items"),
+	                bundle.getString("2-4_items"),
+	                bundle.getString("more_than_5")
 	        };
 
 	          ChoiceFormat choiceform = new ChoiceFormat(fileLimits, fileStrings);

@@ -20,7 +20,7 @@
       <TextField fx:id="weightTextField" layoutX="278.0" layoutY="70.0" promptText="%textField2" />
       <Button fx:id="addItemButton" layoutX="492.0" layoutY="26.0" mnemonicParsing="false" onAction="#addItemButtonClicked" text="%button.enter1" />
       <Button fx:id="deleteItemButton" layoutX="495.0" layoutY="70.0" mnemonicParsing="false" text="%button.enter2" />
-      <Button fx:id="backButton" layoutX="352.0" layoutY="319.0" mnemonicParsing="false" text="%button.enter5" />
+      <Button fx:id="backButton" layoutX="352.0" layoutY="319.0" mnemonicParsing="false" onAction="#backButtonClicked" text="%button.enter5" />
       <Button fx:id="doButton" layoutX="247.0" layoutY="319.0" mnemonicParsing="false" onAction="#DoButtonClicked" text="%button.enter4" />
       <TextField fx:id="maxWeightTextField" layoutX="278.0" layoutY="113.0" promptText="%textField3" />
       <Button fx:id="setWeightButton" layoutX="473.0" layoutY="113.0" mnemonicParsing="false" onAction="#setMaxWeightButtonClicked" text="%button.enter3" />

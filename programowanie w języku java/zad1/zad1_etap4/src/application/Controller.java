@@ -26,28 +26,17 @@ import javafx.stage.Stage;
 import zad1.Instancja;
 
 public class Controller implements Initializable {
-	@FXML
-	CheckBox checkBoxBF;
-	@FXML
-	CheckBox checkBoxGr;
-	@FXML
-	TextField readTextField;
-	@FXML
-	Button enterDataButton;
-	@FXML
-	Button readDataButton;
-	@FXML
-	Button exitButton;
-	@FXML
-	MenuItem about_program;
-	@FXML
-	MenuItem about_BF;
-	@FXML
-	MenuItem about_GR;
-	@FXML
-	MenuItem language;
-	@FXML
-	Label dateLabel;
+	@FXML CheckBox checkBoxBF;
+	@FXML CheckBox checkBoxGr;
+	@FXML TextField readTextField;
+	@FXML Button enterDataButton;
+	@FXML Button readDataButton;
+	@FXML Button exitButton;
+	@FXML MenuItem about_program;
+	@FXML MenuItem about_BF;
+	@FXML MenuItem about_GR;
+	@FXML MenuItem language;
+	@FXML Label dateLabel;
 
 	String filename;
 	String algorithm;
@@ -98,8 +87,6 @@ public class Controller implements Initializable {
 	}
 
 	public void showEnterDataView(ActionEvent event) throws IOException {
-	//	Locale.setDefault(new Locale(choose));
-	//	ResourceBundle bundle = ResourceBundle.getBundle("lang");
 		AnchorPane enterData = (AnchorPane) FXMLLoader.load(getClass().getResource("EnterData.fxml"), bundle);
 		Scene scene = new Scene(enterData, 700, 400);
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -109,8 +96,6 @@ public class Controller implements Initializable {
 	}
 
 	public void showReadDataView(ActionEvent event) throws IOException {
-	//	Locale.setDefault(new Locale(choose));
-	//	ResourceBundle bundle = ResourceBundle.getBundle("lang");
 		AnchorPane enterData = (AnchorPane) FXMLLoader.load(getClass().getResource("ReadData.fxml"), bundle);
 		Scene scene = new Scene(enterData, 600, 400);
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -120,7 +105,7 @@ public class Controller implements Initializable {
 
 	}
 
-	public void englishLanguage(ActionEvent event) throws IOException {
+	public void usLanguage(ActionEvent event) throws IOException {
 
 		Stage s = Main.getPrimaryStage();
 		s.close();
@@ -130,7 +115,7 @@ public class Controller implements Initializable {
 
 	}
 
-	public void polishLanguage() {
+	public void plLanguage() {
 		Stage s = Main.getPrimaryStage();
 		s.close();
 		choose = "PL";
@@ -138,25 +123,30 @@ public class Controller implements Initializable {
 		Platform.runLater(() -> new Main().start(new Stage()));
 
 	}
+	
+	public void gbLanguage() {
+		Stage s = Main.getPrimaryStage();
+		s.close();
+		choose = "GB";
+		Main.setLang(choose);
+		Platform.runLater(() -> new Main().start(new Stage()));
+
+	}
 
 	public void aboutProgram(ActionEvent event) {
-	//	ResourceBundle b = Main.getBundle();
 		String version = " 1.2";
 		new Alert(Alert.AlertType.INFORMATION, bundle.getString("program.info") + version).showAndWait();
 	}
 
 	public void aboutBF() {
-		//ResourceBundle b = Main.getBundle();
 		new Alert(Alert.AlertType.INFORMATION, bundle.getString("program.info2")).showAndWait();
 	}
 
 	public void aboutGR() {
-		//ResourceBundle b = Main.getBundle();
 		new Alert(Alert.AlertType.INFORMATION, bundle.getString("program.info3")).showAndWait();
 	}
 
 	private void showDate() {
-		//Locale.setDefault(new Locale("PL"));
 		final StringProperty sp = new SimpleStringProperty();
 		dateLabel.textProperty().bindBidirectional(sp);
 		DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault());

@@ -25,8 +25,9 @@
           </Menu>
             <Menu fx:id="language" mnemonicParsing="false" text="%menu.bar5">
                <items>
-                  <MenuItem fx:id="polish" mnemonicParsing="false" onAction="#polishLanguage" text="%menu.bar6" />
-                  <MenuItem fx:id="english" mnemonicParsing="false" onAction="#englishLanguage" text="%menu.bar7" />
+                  <MenuItem fx:id="polish" mnemonicParsing="false" onAction="#plLanguage" text="%menu.bar6" />
+                  <MenuItem fx:id="english" mnemonicParsing="false" onAction="#usLanguage" text="%menu.bar7" />
+                  <MenuItem fx:id="englishGB" mnemonicParsing="false" onAction="#gbLanguage" text="%menu.bar8" />
                </items>
             </Menu>
         </menus>

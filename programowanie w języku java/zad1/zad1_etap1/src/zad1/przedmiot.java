@@ -26,16 +26,23 @@ public class Przedmiot
 		this.value=value;
 		this.weight=weight;
 	}
+	/**
+	 * @return Metoda ta zwraca index przedmiotu
+	 */
 	public int getIndex()
 	{
 		return index;
 	}
-	
+	/**
+	 * @return Metoda ta zwraca wartoœæ przedmiotu 
+	 */
 	public float getValue()
 	{
 		return value;
 	}
-	
+	/**
+	 * @return Metoda ta zwraca wagê przedmiotu
+	 */
 	public int getWeight()
 	{
 		return weight;

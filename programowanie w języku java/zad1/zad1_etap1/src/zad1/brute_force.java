@@ -18,6 +18,12 @@ public class Brute_force implements Interfejs {
 	private float curValue;
 	private int numItems;
 	private String algorithmName = "Brute Force";
+	
+	/**
+	 * Kontruktor inicjalizuje nastêpuj¹ce zmienne 
+	 * @param maxWeight przechowuje maksymalna wage plecaka
+	 * @param numItems przechowuje iloœæ wszystkich przedmiotów
+	 */
 
 	public Brute_force(int maxWeight, int numItems) {
 		this.maxWeight = maxWeight;
