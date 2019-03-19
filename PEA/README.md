@@ -1,6 +1,8 @@
-Projekt PEA
-Projekt I algorytmy:
-Brute force
-Branch and bound
-Projekt II algorytm tabu search
-Projekt III
+>Projekt PEA
+>Projekt I algorytmy:
+-Brute force
+-Branch and bound
+>Projekt II algorytm:
+-Tabu search
+>Projekt III algorytm:
+-Genetyczny
