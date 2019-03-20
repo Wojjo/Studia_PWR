@@ -8,12 +8,13 @@ import java.util.Map;
 import java.util.Random;
 
 public class Start {
+	
 	public void random() {
 		Random r = new Random();
 		long bean = r.nextInt(3000) + 1;
-		float random_bean;
+		long random_bean;
 		ReferenceQueue reference_queue = new ReferenceQueue();
-		Map<Long, List<Double>> map = new HashMap<Long, List<Double>>();
+		Map<Long, List<Long>> map = new HashMap<Long, List<Long>>();
 		SoftReference reference = new SoftReference(map, reference_queue);
 		Threads[] threads = new Threads[5];
 
@@ -21,7 +22,7 @@ public class Start {
 			for (int i = 0; i < 5; i++) {
 				random_bean = r.nextInt(3000) + 1;
 				threads[i] = new Threads(map, random_bean, reference, i);
-
+				threads[i].start();
 			}
 		}
 
