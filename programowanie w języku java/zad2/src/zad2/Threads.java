@@ -61,6 +61,10 @@ public class Threads extends Thread {
 				reference = new SoftReference(map.put(random_bean,  generate_items(random_bean)));
 				list = map.get(random_bean);
 			}
+			log.log(Level.INFO, "Obliczam wynik ");
+			{
+				
+			}
 		}
 	}
 }
