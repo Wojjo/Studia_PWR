@@ -1,10 +1,14 @@
 package zad2;
 
+import java.io.IOException;
 import java.lang.ref.SoftReference;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 public class Threads extends Thread {
 	private List<Long> list;
@@ -36,7 +40,26 @@ public class Threads extends Thread {
 		{
 			try
 			{
-				
+				FileHandler fhandler = new FileHandler("log" + thread_index + "\\log" + thread_index + ".txt");
+				SimpleFormatter sformatter = new SimpleFormatter();
+				fhandler.setFormatter(sformatter);
+				log.addHandler(fhandler);
+			}
+			catch(IOException e)
+			{
+				log.log(Level.SEVERE, e.getMessage(), e);
+			}
+			
+			log.log(Level.INFO, "Sprawdzenie czy w pamieci znajduje sie instancja o podanym ziarnie");
+			if (map.containsKey(random_bean))
+			{
+				list = map.get(random_bean);
+			} 
+			else
+			{
+				log.log(Level.INFO, "Generuje instancje na podstawie podanego ziarna");
+				reference = new SoftReference(map.put(random_bean,  generate_items(random_bean)));
+				list = map.get(random_bean);
 			}
 		}
 	}
