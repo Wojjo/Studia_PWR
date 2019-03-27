@@ -58,26 +58,26 @@ public class MainMenu
 	
 	public static void random() {
 		Random r = new Random();
-		long bean = r.nextInt(30);
+		long bean = r.nextInt(18);
 		long random_bean;
 		ReferenceQueue reference_queue = new ReferenceQueue();
 		Map<Long, List<Items>> map = new HashMap<Long, List<Items>>();
 		SoftReference reference = new SoftReference(map, reference_queue);
-		//Threads[] threads = new Threads[5];
-		Threads threads;
+		Threads[] threads = new Threads[5];
+		//Threads threads;
 
-	//	while (true) {
-	//		for (int i = 0; i < 5; i++) {
-				//random_bean = r.nextInt(30) + 1;
-				//threads[i] = new Threads(map, random_bean, reference, i);
-				//threads[i].start();
-		System.out.println("Podaj rb: ");
-				Scanner sc = new Scanner(System.in);
-				long rb = sc.nextInt();
-				threads = new Threads(map, rb, reference, 1);
-				threads.start();
-//			}
-//		}
+		while (true) {
+			for (int i = 0; i < 2; i++) {
+				random_bean = r.nextInt(18) + 1;
+				threads[i] = new Threads(map, random_bean, reference, i);
+				threads[i].start();
+		//System.out.println("Podaj rb: ");
+		//		Scanner sc = new Scanner(System.in);
+		//		long rb = sc.nextInt();
+		//		threads = new Threads(map, rb, reference, 1);
+		//		threads.start();
+			}
+		}
 
 	}
 

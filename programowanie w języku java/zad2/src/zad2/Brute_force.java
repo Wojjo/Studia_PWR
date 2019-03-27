@@ -1,7 +1,6 @@
 package zad2;
 
-public class Brute_force
-{
+public class Brute_force {
 
 	private int maxWeight;
 	private boolean[] solution;
@@ -11,30 +10,25 @@ public class Brute_force
 	private int curWeight;
 	private float curValue;
 	private int numItems;
-		
-	
 
 	public Brute_force(int maxWeight, int numItems) {
 		this.maxWeight = maxWeight;
 		this.numItems = numItems;
 	}
 
-	
-	public void startAlgorithm()
-	{
+	public void startAlgorithm() {
 		System.out.println(numItems);
 		current = new boolean[numItems];
 		solution = new boolean[numItems];
-		algorithm(numItems - 2);
+		algorithm(numItems - 1);
 		show_result();
 	}
-	
 
 	public void algorithm(int numSize) {
 		if (numSize < 0) {
 			curWeight = 0;
 			curValue = 0;
-			
+
 			for (int i = 0; i < numItems; i++) {
 				if (current[i]) {
 					curWeight += Threads.list.get(i).weight;
@@ -42,7 +36,7 @@ public class Brute_force
 
 				}
 			}
-			
+
 			if (curWeight <= maxWeight && curValue > curBestValue) {
 				curBestValue = curValue;
 				curBestWeight = curWeight;
@@ -51,7 +45,7 @@ public class Brute_force
 				}
 			}
 		} else {
-			// zaznaczanie ze przedmiot zostal spakowany 
+			// zaznaczanie ze przedmiot zostal spakowany
 			current[numSize] = true;
 			algorithm(numSize - 1);
 			// zaznaczanie ze przedmiot nie zostal spakowany
@@ -61,11 +55,9 @@ public class Brute_force
 		}
 
 	}
-	
-	public void show_result()
-	{
-		System.out.println(" Wynik: " + curBestValue + " waga: " + curBestWeight);		
+
+	public void show_result() {
+		System.out.println(" Wynik: " + curBestValue + " waga: " + curBestWeight);
 	}
-	
 
 }

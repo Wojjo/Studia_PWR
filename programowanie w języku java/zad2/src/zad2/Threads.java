@@ -19,10 +19,10 @@ public class Threads extends Thread {
 	protected final Logger log = Logger.getLogger(getClass().getName());
 	private int thread_index;
 	int maxWeight = 20;
-	int numItems=6;
+	static int numItems = 0;
 
-	public static List<Items> generate_items(long bean)
-	{
+	public static List<Items> generate_items(long bean) {
+		numItems = (int) bean;
 		List<Items> items = new LinkedList<Items>();
 		for (int i = 0; i < bean; i++) {
 			value = (i * bean) + 2;
@@ -47,22 +47,50 @@ public class Threads extends Thread {
 				fhandler.setFormatter(sformatter);
 				log.addHandler(fhandler);
 			} catch (IOException e) {
-				log.log(Level.SEVERE, e.getMessage(), e);
+				// log.log(Level.SEVERE, e.getMessage(), e);
 			}
 
-			log.log(Level.INFO, "Sprawdzenie czy w pamieci znajduje sie instancja o podanym ziarnie");
+			log.log(Level.INFO,
+					"Sprawdzenie czy w pamieci znajduje sie instancja o podanym ziarnie. Index watku " + thread_index);
 			if (map.containsKey(random_bean)) {
 				list = map.get(random_bean);
+				System.out.println("Wynik na liscie");
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 			} else {
-				log.log(Level.INFO, "Generuje instancje na podstawie podanego ziarna");
+				log.log(Level.INFO, "Generuje instancje na podstawie podanego ziarna Index watku " + thread_index);
 				reference = new SoftReference(map.put(random_bean, generate_items(random_bean)));
 				list = map.get(random_bean);
-			}
-			log.log(Level.INFO, "Obliczam wynik ");
-			{
-				Brute_force force = new Brute_force(maxWeight, numItems);;
-				force.startAlgorithm();
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				log.log(Level.INFO, "Obliczam wynik Index watku " + thread_index);
+				{
+					Brute_force force = new Brute_force(maxWeight, numItems);
+					force.startAlgorithm();
+					
+					Greedy greedy = new Greedy(maxWeight, numItems);
+					greedy.startAlgorithm();
+					
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+				}
 			}
 		}
 	}
+
 }
