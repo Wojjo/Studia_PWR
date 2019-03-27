@@ -36,12 +36,12 @@ public class MainMenu
 	    		classes.add(Class.forName("Greedy", false, loader));
 	    		break;
 	    	case 2:
-	    		try
-	    		{
+	    	//	try
+	    		//{
 	    			random();
-				} catch (Exception e) {
-					System.out.println("brak zaladownych klas");
-				}
+			//	} catch (Exception e) {
+			//		System.out.println("brak zaladownych klas");
+			//	}
 	    		break;
 	    	case 3:
 	    		classes.remove(0);
@@ -61,17 +61,23 @@ public class MainMenu
 		long bean = r.nextInt(30);
 		long random_bean;
 		ReferenceQueue reference_queue = new ReferenceQueue();
-		Map<Long, List<Long>> map = new HashMap<Long, List<Long>>();
+		Map<Long, List<Items>> map = new HashMap<Long, List<Items>>();
 		SoftReference reference = new SoftReference(map, reference_queue);
-		Threads[] threads = new Threads[5];
+		//Threads[] threads = new Threads[5];
+		Threads threads;
 
-		while (true) {
-			for (int i = 0; i < 5; i++) {
-				random_bean = r.nextInt(30) + 1;
-				threads[i] = new Threads(map, random_bean, reference, i);
-				threads[i].start();
-			}
-		}
+	//	while (true) {
+	//		for (int i = 0; i < 5; i++) {
+				//random_bean = r.nextInt(30) + 1;
+				//threads[i] = new Threads(map, random_bean, reference, i);
+				//threads[i].start();
+		System.out.println("Podaj rb: ");
+				Scanner sc = new Scanner(System.in);
+				long rb = sc.nextInt();
+				threads = new Threads(map, rb, reference, 1);
+				threads.start();
+//			}
+//		}
 
 	}
 

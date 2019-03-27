@@ -1,8 +1,5 @@
 package zad2;
 
-import java.util.ResourceBundle;
-
-
 public class Brute_force
 {
 
@@ -14,8 +11,7 @@ public class Brute_force
 	private int curWeight;
 	private float curValue;
 	private int numItems;
-	private String algorithmName = "Brute Force";
-	
+		
 	
 
 	public Brute_force(int maxWeight, int numItems) {
@@ -24,11 +20,15 @@ public class Brute_force
 	}
 
 	
-	public void startAlgorithm() {
+	public void startAlgorithm()
+	{
+		System.out.println(numItems);
 		current = new boolean[numItems];
 		solution = new boolean[numItems];
-		algorithm(numItems - 1);
+		algorithm(numItems - 2);
+		show_result();
 	}
+	
 
 	public void algorithm(int numSize) {
 		if (numSize < 0) {
@@ -37,8 +37,8 @@ public class Brute_force
 			
 			for (int i = 0; i < numItems; i++) {
 				if (current[i]) {
-				//	curWeight += Instancja.itemList.get(i).weight;
-				//	curValue += Instancja.itemList.get(i).value;
+					curWeight += Threads.list.get(i).weight;
+					curValue += Threads.list.get(i).value;
 
 				}
 			}
@@ -61,5 +61,11 @@ public class Brute_force
 		}
 
 	}
+	
+	public void show_result()
+	{
+		System.out.println(" Wynik: " + curBestValue + " waga: " + curBestWeight);		
+	}
+	
 
 }
