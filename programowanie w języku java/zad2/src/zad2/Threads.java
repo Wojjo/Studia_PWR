@@ -47,8 +47,10 @@ public class Threads extends Thread {
 				fhandler.setFormatter(sformatter);
 				log.addHandler(fhandler);
 			} catch (IOException e) {
-				// log.log(Level.SEVERE, e.getMessage(), e);
-			}
+				 log.log(Level.SEVERE, e.getMessage(), e);
+			}catch (SecurityException ex) {
+		        log.log(Level.SEVERE, ex.getMessage(), ex);
+		    }
 
 			log.log(Level.INFO,
 					"Sprawdzenie czy w pamieci znajduje sie instancja o podanym ziarnie. Index watku " + thread_index);
@@ -58,7 +60,6 @@ public class Threads extends Thread {
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 
@@ -69,7 +70,6 @@ public class Threads extends Thread {
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 
@@ -84,7 +84,6 @@ public class Threads extends Thread {
 					try {
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 
