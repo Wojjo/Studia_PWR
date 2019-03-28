@@ -1,0 +1,4 @@
+mar 28, 2019 8:37:25 PM zad2.Threads run
+INFO: Sprawdzenie czy w pamieci znajduje sie instancja o podanym ziarnie. Index watku 1
+mar 28, 2019 8:37:25 PM zad2.Threads run
+INFO: Generuje instancje na podstawie podanego ziarna Index watku 1

@@ -1,0 +1,266 @@
+mar 28, 2019 7:18:22 PM lab3.Watek run
+SEVERE: Couldn't get lock for log0\log0.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log0\log0.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:23 PM lab3.Watek run
+SEVERE: Couldn't get lock for log4\log4.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log4\log4.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:23 PM lab3.Watek run
+SEVERE: Couldn't get lock for log1\log1.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log1\log1.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:24 PM lab3.Watek run
+SEVERE: Couldn't get lock for log0\log0.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log0\log0.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:24 PM lab3.Watek run
+SEVERE: Couldn't get lock for log4\log4.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log4\log4.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:24 PM lab3.Watek run
+SEVERE: Couldn't get lock for log4\log4.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log4\log4.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:24 PM lab3.Watek run
+SEVERE: Couldn't get lock for log3\log3.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log3\log3.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:24 PM lab3.Watek run
+SEVERE: Couldn't get lock for log2\log2.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log2\log2.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:24 PM lab3.Watek run
+SEVERE: Couldn't get lock for log1\log1.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log1\log1.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:24 PM lab3.Watek run
+SEVERE: Couldn't get lock for log3\log3.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log3\log3.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:24 PM lab3.Watek run
+SEVERE: Couldn't get lock for log0\log0.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log0\log0.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:24 PM lab3.Watek run
+SEVERE: Couldn't get lock for log4\log4.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log4\log4.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:24 PM lab3.Watek run
+SEVERE: Couldn't get lock for log2\log2.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log2\log2.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:25 PM lab3.Watek run
+SEVERE: Couldn't get lock for log1\log1.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log1\log1.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:25 PM lab3.Watek run
+SEVERE: Couldn't get lock for log0\log0.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log0\log0.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:25 PM lab3.Watek run
+SEVERE: Couldn't get lock for log4\log4.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log4\log4.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:25 PM lab3.Watek run
+SEVERE: Couldn't get lock for log3\log3.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log3\log3.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:25 PM lab3.Watek run
+SEVERE: Couldn't get lock for log2\log2.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log2\log2.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:25 PM lab3.Watek run
+SEVERE: Couldn't get lock for log1\log1.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log1\log1.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:25 PM lab3.Watek run
+SEVERE: Couldn't get lock for log0\log0.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log0\log0.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:25 PM lab3.Watek run
+SEVERE: Couldn't get lock for log4\log4.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log4\log4.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:25 PM lab3.Watek run
+SEVERE: Couldn't get lock for log3\log3.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log3\log3.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:25 PM lab3.Watek run
+SEVERE: Couldn't get lock for log1\log1.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log1\log1.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:25 PM lab3.Watek run
+SEVERE: Couldn't get lock for log2\log2.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log2\log2.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:25 PM lab3.Watek run
+SEVERE: Couldn't get lock for log0\log0.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log0\log0.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:25 PM lab3.Watek run
+SEVERE: Couldn't get lock for log4\log4.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log4\log4.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:25 PM lab3.Watek run
+SEVERE: Couldn't get lock for log3\log3.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log3\log3.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:25 PM lab3.Watek run
+SEVERE: Couldn't get lock for log2\log2.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log2\log2.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:25 PM lab3.Watek run
+SEVERE: Couldn't get lock for log1\log1.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log1\log1.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:25 PM lab3.Watek run
+SEVERE: Couldn't get lock for log0\log0.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log0\log0.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:25 PM lab3.Watek run
+SEVERE: Couldn't get lock for log4\log4.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log4\log4.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:26 PM lab3.Watek run
+SEVERE: Couldn't get lock for log3\log3.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log3\log3.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:26 PM lab3.Watek run
+SEVERE: Couldn't get lock for log2\log2.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log2\log2.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:26 PM lab3.Watek run
+SEVERE: Couldn't get lock for log1\log1.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log1\log1.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:26 PM lab3.Watek run
+SEVERE: Couldn't get lock for log0\log0.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log0\log0.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:26 PM lab3.Watek run
+SEVERE: Couldn't get lock for log4\log4.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log4\log4.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:26 PM lab3.Watek run
+SEVERE: Couldn't get lock for log3\log3.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log3\log3.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
+mar 28, 2019 7:18:26 PM lab3.Watek run
+SEVERE: Couldn't get lock for log2\log2.txt, maxLocks: 100
+java.io.IOException: Couldn't get lock for log2\log2.txt, maxLocks: 100
+	at java.util.logging.FileHandler.openFiles(Unknown Source)
+	at java.util.logging.FileHandler.<init>(Unknown Source)
+	at lab3.Watek.run(Watek.java:50)
+
