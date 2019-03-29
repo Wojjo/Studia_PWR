@@ -37,10 +37,12 @@ public class MainMenu extends Thread {
 				load_classes();
 				break;
 			case 2:
-				try {
-					random();
-				} catch (Exception e) {
-					System.out.println("brak zaladownych klas");
+				if (classes.size() > 0) {
+				random();
+				}
+				else
+				{
+					System.out.println("Najpierw zaladuj klasy");
 				}
 				break;
 			case 3:
@@ -75,9 +77,9 @@ public class MainMenu extends Thread {
 		File dir = new File(
 				"C:\\Users\\pwojc\\OneDrive\\Dokumenty\\GitHub\\Studia_PWR\\programowanie w jêzyku java\\zad2\\algorytmy\\zad2");
 		File[] directListing = dir.listFiles();
+		System.out.println("Klasy zaladowane ");
 		System.out.println("Dostepne algorytmy: ");
-		if (directListing != null)
-		{
+		if (directListing != null) {
 			for (File child : directListing) {
 				String childName = child.getName();
 				String className = childName.replace(".class", "");

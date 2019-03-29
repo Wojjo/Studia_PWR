@@ -24,7 +24,7 @@ public class Brute_force {
 		curWeight = 0;
 		curValue = 0;
 		algorithm(numItems - 1, maxWeight, numItems);
-		show_result();
+		result(numItems);
 	}
 
 	public static void algorithm(int numSize, int maxWeight, int numItems) {
@@ -59,8 +59,26 @@ public class Brute_force {
 		}
 
 	}
+	
+	public static void result(int numItems)
+	{
+		
+		String items = " ";
+		String name = " Brute force ";
+		
+		for (int i = 0; i < numItems; i++) {
+			if (solution[i]) {
+				
+			}
+				items += Threads.list.get(i).index + " ";
+			}
+		System.out.println("Rozwiazano uzywajac " + name + " Wynik: " + curBestValue + " Waga: " + curBestWeight + " Przedmioty: " + items);
+		
+		//return result;
+	}
 
 	public static void show_result() {
+		System.out.println(" Rozwiazano uzywajac Brute_force");
 		System.out.println(" Wynik: " + curBestValue + " waga: " + curBestWeight);
 	}
 

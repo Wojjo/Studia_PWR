@@ -3,31 +3,36 @@ package zad2;
 import java.util.ArrayList;
 
 public class Greedy {
-	ArrayList<Items> orderedList = new ArrayList<Items>();
-	Items curItem;
+	static ArrayList<Items> orderedList = new ArrayList<Items>();
+	// static Items curItem;
 	private int maxWeight;
-	private int curWeight;
+	private static int curWeight;
 	private int numItems;
-	private long curRatio;
-	private long orderedCurRatio;
-	private long curValue;
-	private boolean solution[];
-	private boolean added;
-	
+	private static long curRatio;
+	private static long orderedCurRatio;
+	private static long curValue;
+	private static boolean solution[];
+	// private static boolean added;
 
 	public Greedy(int maxWeight, int numItems) {
-		this.maxWeight = maxWeight;
-		this.numItems = numItems;
+		// this.maxWeight = maxWeight;
+		// this.numItems = numItems;
 	}
 
-	public void startAlgorithm() {
+	public static void startAlgorithm(int maxWeight, int numItems) {
 		solution = new boolean[numItems];
-		algorithm(numItems);
-		show_result();
+		curRatio = 0;
+		orderedCurRatio = 0;
+		curValue = 0;
+		curWeight = 0;
+		algorithm(numItems, maxWeight, numItems);
+		result(numItems);
 
 	}
 
-	public void algorithm(int numSize) {
+	public static void algorithm(int numSize, int maxWeight, int numItems) {
+		Items curItem;
+		boolean added;
 		curWeight = 0;
 		// dodanie przedmiotu 0
 		orderedList.add(Threads.list.get(0));
@@ -69,8 +74,8 @@ public class Greedy {
 			// jesli waga przedmiotu i obecna waga plecaka nie przekracza maksymalnej wagi
 			// plecaka
 			if (curItem.weight + curWeight <= maxWeight) {
-				
-				//solution[curItem.index - 1] = true;
+
+				// solution[curItem.index - 1] = true;
 				// przypisanie nowych wartoci
 				curValue += curItem.value;
 				curWeight += curItem.weight;
@@ -78,9 +83,23 @@ public class Greedy {
 
 		}
 	}
-	
-	public void show_result() {
-		System.out.println(" Wynik: " + curValue + " waga: " + curWeight);
+
+	public static void result(int numItems)
+	{
+		
+		String items = " ";
+		String name = " Greedy ";
+		
+		for (int i = 0; i < numItems; i++) {
+			if (solution[i]) {
+				
+			}
+				items += Threads.list.get(i).index + " ";
+			}
+		System.out.println("Rozwiazano uzywajac " + name + " Wynik: " + curValue + " Waga: " + curWeight + " Przedmioty: " + items);
+		
+		//return result;
 	}
+
 
 }

@@ -80,26 +80,18 @@ public class Threads extends Thread {
 				{
 					int rand;
 					Random r = new Random();
-					rand = r.nextInt(2);
-					rand = 0;
-					if (rand == 0) {
-						log.log(Level.INFO, "Rozwiazanie przy uzyciu Brute_force");
+					rand = r.nextInt(MainMenu.classes.size());
+					
+						
 						try {
-							Method bf = (MainMenu.classes.get(0).getMethod("startAlgorithm",
+							Method m = (MainMenu.classes.get(rand).getMethod("startAlgorithm",
 									new Class[] { int.class, int.class }));
-							bf.invoke(null, maxWeight, numItems);
+							m.invoke(null, maxWeight, numItems);
 						} catch (NoSuchMethodException | SecurityException | IllegalArgumentException
 								| IllegalAccessException | InvocationTargetException e) {
-							// TODO Auto-generated catch block
+							
 							e.printStackTrace();
 						}
-
-					}
-					if (rand == 1) {
-						log.log(Level.INFO, "Rozwiazanie przy uzyciu Greedy");
-						Greedy greedy = new Greedy(maxWeight, numItems);
-						greedy.startAlgorithm();
-					}
 
 					try {
 						Thread.sleep(1000);
