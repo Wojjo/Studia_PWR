@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Greedy {
 	static ArrayList<Items> orderedList = new ArrayList<Items>();
-	// static Items curItem;
+	static Items curItem;
 	private int maxWeight;
 	private static int curWeight;
 	private int numItems;
@@ -26,12 +26,12 @@ public class Greedy {
 		curValue = 0;
 		curWeight = 0;
 		algorithm(numItems, maxWeight, numItems);
-		result(numItems);
+		//result(numItems);
 
 	}
 
 	public static void algorithm(int numSize, int maxWeight, int numItems) {
-		Items curItem;
+		
 		boolean added;
 		curWeight = 0;
 		// dodanie przedmiotu 0
@@ -70,21 +70,25 @@ public class Greedy {
 		while (curWeight < maxWeight && !orderedList.isEmpty()) {
 
 			int highestValueIndex = orderedList.size() - 1;
-			curItem = orderedList.remove(highestValueIndex);
+			
 			// jesli waga przedmiotu i obecna waga plecaka nie przekracza maksymalnej wagi
 			// plecaka
+		
+			
 			if (curItem.weight + curWeight <= maxWeight) {
 
-				// solution[curItem.index - 1] = true;
+				solution[curItem.index] = true;
 				// przypisanie nowych wartoci
 				curValue += curItem.value;
 				curWeight += curItem.weight;
 			}
-
+			
+			curItem = orderedList.remove(highestValueIndex);
 		}
+		
 	}
 
-	public static void result(int numItems)
+	public static String result(int numItems)
 	{
 		
 		String items = " ";
@@ -92,13 +96,13 @@ public class Greedy {
 		
 		for (int i = 0; i < numItems; i++) {
 			if (solution[i]) {
-				
-			}
 				items += Threads.list.get(i).index + " ";
 			}
-		System.out.println("Rozwiazano uzywajac " + name + " Wynik: " + curValue + " Waga: " + curWeight + " Przedmioty: " + items);
-		
-		//return result;
+				
+			}
+		String result = ("Rozwiazano uzywajac " + name + " Wynik: " + curValue + " Waga: " + curWeight + " Przedmioty: " + items);
+		//System.out.println(result);
+		return result;
 	}
 
 

@@ -21,7 +21,7 @@ public class MainMenu extends Thread {
 	static Class cla;
 	static Method[] methods;
 
-	public static void menu() throws ClassNotFoundException, MalformedURLException {
+	public static void menu() throws ClassNotFoundException, MalformedURLException, InterruptedException {
 
 		System.out.println("1. Zaladuj klasy");
 		System.out.println("2. Rozwiaz problem plecakowy");
@@ -109,23 +109,32 @@ public class MainMenu extends Thread {
 
 	}
 
-	public static void random() {
+	public static void random() throws InterruptedException {
 		Random r = new Random();
-		// long bean = r.nextInt(20);
+		int licznik=0, j=0;
 		long random_bean;
 		ReferenceQueue reference_queue = new ReferenceQueue();
-		Map<Long, List<Items>> map = new HashMap<Long, List<Items>>();
+		Map<Long, List<Solution>> map = new HashMap<Long, List<Solution>>();
 		SoftReference reference = new SoftReference(map, reference_queue);
 		Threads[] threads = new Threads[3];
 		while (true) {
 			for (int i = 0; i < 3; i++) {
-				random_bean = r.nextInt(18) + 1;
+				random_bean = r.nextInt(20) + 1;
 				threads[i] = new Threads(map, random_bean, reference, i);
 				threads[i].start();
+				//	reference = (SoftReference) reference_queue.remove();
+				//	reference.clear();
+				//	licznik++;
+
+			}
+		//	j++;
+		
+		//System.out.println(j);
+		//Thread.sleep(1000);
 
 			}
 		}
 
-	}
+	
 
 }

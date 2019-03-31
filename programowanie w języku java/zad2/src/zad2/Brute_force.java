@@ -1,7 +1,10 @@
 package zad2;
 
-public class Brute_force {
+import java.util.LinkedList;
+import java.util.List;
 
+public class Brute_force {
+	static List<Solution> result = new LinkedList<Solution>();
 	private static boolean[] solution;
 	private static boolean[] current;
 	private static float curBestValue;
@@ -59,8 +62,9 @@ public class Brute_force {
 		}
 
 	}
+
 	
-	public static void result(int numItems)
+	public static List<Solution> result(int numItems)
 	{
 		
 		String items = " ";
@@ -68,18 +72,17 @@ public class Brute_force {
 		
 		for (int i = 0; i < numItems; i++) {
 			if (solution[i]) {
+				items += Threads.list.get(i).index + " ";		
+			}
 				
 			}
-				items += Threads.list.get(i).index + " ";
-			}
-		System.out.println("Rozwiazano uzywajac " + name + " Wynik: " + curBestValue + " Waga: " + curBestWeight + " Przedmioty: " + items);
+		result.add(new Solution(items, curBestWeight));
+		String resulta = ("Rozwiazano uzywajac " + name + " Wynik: " + curBestValue + " Waga: " + curBestWeight + " Przedmioty: " + items);
 		
-		//return result;
+		System.out.println(resulta);
+		return result;
 	}
 
-	public static void show_result() {
-		System.out.println(" Rozwiazano uzywajac Brute_force");
-		System.out.println(" Wynik: " + curBestValue + " waga: " + curBestWeight);
-	}
+
 
 }
