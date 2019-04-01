@@ -1,18 +1,18 @@
 package zad2;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Greedy {
 	static ArrayList<Items> orderedList = new ArrayList<Items>();
 	static Items curItem;
-	private int maxWeight;
+	//private int maxWeight;
 	private static int curWeight;
-	private int numItems;
+	//private int numItems;
 	private static long curRatio;
 	private static long orderedCurRatio;
 	private static long curValue;
 	private static boolean solution[];
-	// private static boolean added;
 
 	public Greedy(int maxWeight, int numItems) {
 		// this.maxWeight = maxWeight;
@@ -26,12 +26,12 @@ public class Greedy {
 		curValue = 0;
 		curWeight = 0;
 		algorithm(numItems, maxWeight, numItems);
-		//result(numItems);
+		result(numItems);
 
 	}
 
 	public static void algorithm(int numSize, int maxWeight, int numItems) {
-		
+
 		boolean added;
 		curWeight = 0;
 		// dodanie przedmiotu 0
@@ -70,40 +70,46 @@ public class Greedy {
 		while (curWeight < maxWeight && !orderedList.isEmpty()) {
 
 			int highestValueIndex = orderedList.size() - 1;
-			
+
 			// jesli waga przedmiotu i obecna waga plecaka nie przekracza maksymalnej wagi
 			// plecaka
-		
 			
 			if (curItem.weight + curWeight <= maxWeight) {
-
-				solution[curItem.index] = true;
+				try
+				{
+				 solution[curItem.index] = true;
+				}catch(Exception e)
+				{
+					System.out.print("");
+				}
 				// przypisanie nowych wartoci
 				curValue += curItem.value;
 				curWeight += curItem.weight;
 			}
-			
 			curItem = orderedList.remove(highestValueIndex);
+			
 		}
-		
+
 	}
 
-	public static String result(int numItems)
-	{
-		
+	public static String result(int numItems) {
+
 		String items = " ";
-		String name = " Greedy ";
-		
+		String name = "Greedy ";
+
 		for (int i = 0; i < numItems; i++) {
 			if (solution[i]) {
 				items += Threads.list.get(i).index + " ";
 			}
-				
-			}
-		String result = ("Rozwiazano uzywajac " + name + " Wynik: " + curValue + " Waga: " + curWeight + " Przedmioty: " + items);
-		//System.out.println(result);
-		return result;
-	}
+			
+		}
+		Threads.result = new LinkedList<Solution>();
+		Threads.result.add(new Solution(items, curWeight));
+		String result2 = ("Rozwiazano uzywajac " + name + " Wynik: " + curValue + " Waga: " + curWeight
+				+ " Przedmioty: " + items);
 
+		System.out.println(result2);
+		return result2;
+	}
 
 }

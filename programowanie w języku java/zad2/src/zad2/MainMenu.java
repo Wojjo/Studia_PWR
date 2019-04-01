@@ -38,10 +38,8 @@ public class MainMenu extends Thread {
 				break;
 			case 2:
 				if (classes.size() > 0) {
-				random();
-				}
-				else
-				{
+					random();
+				} else {
 					System.out.println("Najpierw zaladuj klasy");
 				}
 				break;
@@ -80,9 +78,9 @@ public class MainMenu extends Thread {
 		System.out.println("Klasy zaladowane ");
 		System.out.println("Dostepne algorytmy: ");
 		if (directListing != null) {
-			for (File child : directListing) {
-				String childName = child.getName();
-				String className = childName.replace(".class", "");
+			for (File f : directListing) {
+				String fName = f.getName();
+				String className = fName.replace(".class", "");
 				System.out.println(className);
 				String classPackage = "zad2.";
 				String fullClassName = classPackage.concat(className);
@@ -111,30 +109,19 @@ public class MainMenu extends Thread {
 
 	public static void random() throws InterruptedException {
 		Random r = new Random();
-		int licznik=0, j=0;
 		long random_bean;
-		ReferenceQueue reference_queue = new ReferenceQueue();
 		Map<Long, List<Solution>> map = new HashMap<Long, List<Solution>>();
-		SoftReference reference = new SoftReference(map, reference_queue);
+		SoftReference reference = new SoftReference(map);
 		Threads[] threads = new Threads[3];
 		while (true) {
-			for (int i = 0; i < 3; i++) {
-				random_bean = r.nextInt(20) + 1;
+			for (int i = 0; i < 2; i++) {
+				random_bean = Math.abs(r.nextLong() % 100);
 				threads[i] = new Threads(map, random_bean, reference, i);
 				threads[i].start();
-				//	reference = (SoftReference) reference_queue.remove();
-				//	reference.clear();
-				//	licznik++;
-
+				
 			}
-		//	j++;
-		
-		//System.out.println(j);
-		//Thread.sleep(1000);
 
-			}
 		}
-
-	
+	}
 
 }
