@@ -3,15 +3,15 @@ package zad2;
 public class Solution {
 
 	public long weight;
-	public String index;
+	public String items;
 
-	public Solution(String index, long weight) {
-		this.index = index;
+	public Solution(String items, long weight) {
+		this.items = items;
 		this.weight = weight;
 	}
 
 	public String getIndex() {
-		return index;
+		return items;
 	}
 
 

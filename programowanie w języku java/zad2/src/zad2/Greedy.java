@@ -15,8 +15,13 @@ public class Greedy {
 	private static boolean solution[];
 
 	public Greedy(int maxWeight, int numItems) {
-		// this.maxWeight = maxWeight;
-		// this.numItems = numItems;
+		solution = new boolean[numItems];
+		curRatio = 0;
+		orderedCurRatio = 0;
+		curValue = 0;
+		curWeight = 0;
+		algorithm(numItems, maxWeight, numItems);
+		result(numItems);
 	}
 
 	public static void startAlgorithm(int maxWeight, int numItems) {

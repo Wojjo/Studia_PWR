@@ -14,6 +14,14 @@ public class Brute_force {
 	public Brute_force(int maxWeight, int numItems) {
 		// this.maxWeight = maxWeight;
 		// this.numItems = numItems;
+		current = new boolean[numItems];
+		solution = new boolean[numItems];
+		curBestValue = 0;
+		curBestWeight = 0;
+		curWeight = 0;
+		curValue = 0;
+		algorithm(numItems - 1, maxWeight, numItems);
+		result(numItems);
 
 	}
 
@@ -77,7 +85,6 @@ public class Brute_force {
 				+ " Przedmioty: " + items);
 		Threads.result = new LinkedList<Solution>();
 		Threads.result.add(new Solution(items, curBestWeight));
-		
 
 		System.out.println(result2);
 		return result2;

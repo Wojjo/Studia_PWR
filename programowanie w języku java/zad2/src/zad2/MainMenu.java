@@ -68,12 +68,12 @@ public class MainMenu extends Thread {
 
 	private static void load_classes() throws MalformedURLException, ClassNotFoundException {
 		URL url = new URL(
-				"file:C:\\Users\\pwojc\\OneDrive\\Dokumenty\\GitHub\\Studia_PWR\\programowanie w jêzyku java\\zad2\\algorytmy\\");
+				"file:D:\\eclipse-workspace\\zad2\\algorytmy\\");
 		urlsToLoadFrom = new URL[] { url };
 		loader = new URLClassLoader(urlsToLoadFrom);
 		classes = new LinkedList<Class>();
 		File dir = new File(
-				"C:\\Users\\pwojc\\OneDrive\\Dokumenty\\GitHub\\Studia_PWR\\programowanie w jêzyku java\\zad2\\algorytmy\\zad2");
+				"D:\\eclipse-workspace\\zad2\\algorytmy\\zad2");
 		File[] directListing = dir.listFiles();
 		System.out.println("Klasy zaladowane ");
 		System.out.println("Dostepne algorytmy: ");
@@ -109,7 +109,7 @@ public class MainMenu extends Thread {
 
 	public static void random() throws InterruptedException {
 		
-		Map<Long, List<Solution>> map = new HashMap<Long, List<Solution>>();
+		Map<Long, Object> map = new HashMap<Long, Object>();
 		SoftReference reference = new SoftReference(map);
 		Threads thread = new Threads(map, reference);
 		
