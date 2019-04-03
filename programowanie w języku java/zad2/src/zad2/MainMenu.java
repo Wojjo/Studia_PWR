@@ -68,7 +68,7 @@ public class MainMenu extends Thread {
 
 	private static void load_classes() throws MalformedURLException, ClassNotFoundException {
 		URL url = new URL(
-				"file:C:\\Users\\pwojc\\OneDrive\\Dokumenty\\GitHub\\Studia_PWR\\programowanie w jêzyku java\\zad2\\algorytmy");
+				"file:C:\\Users\\pwojc\\OneDrive\\Dokumenty\\GitHub\\Studia_PWR\\programowanie w jêzyku java\\zad2\\algorytmy\\");
 		urlsToLoadFrom = new URL[] { url };
 		loader = new URLClassLoader(urlsToLoadFrom);
 		classes = new LinkedList<Class>();
@@ -108,20 +108,11 @@ public class MainMenu extends Thread {
 	}
 
 	public static void random() throws InterruptedException {
-		Random r = new Random();
-		long random_bean;
+		
 		Map<Long, List<Solution>> map = new HashMap<Long, List<Solution>>();
 		SoftReference reference = new SoftReference(map);
-		Threads[] threads = new Threads[3];
-		while (true) {
-			for (int i = 0; i < 2; i++) {
-				random_bean = Math.abs(r.nextLong() % 100);
-				threads[i] = new Threads(map, random_bean, reference, i);
-				threads[i].start();
-				
-			}
-
-		}
+		Threads thread = new Threads(map, reference);
+		
 	}
 
 }
