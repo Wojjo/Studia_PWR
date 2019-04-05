@@ -68,12 +68,12 @@ public class MainMenu extends Thread {
 
 	private static void load_classes() throws MalformedURLException, ClassNotFoundException {
 		URL url = new URL(
-				"file:D:\\eclipse-workspace\\zad2\\algorytmy\\");
+				"file:C:\\Users\\pwojc\\OneDrive\\Dokumenty\\GitHub\\Studia_PWR\\programowanie w jêzyku java\\zad2\\algorytmy\\");
 		urlsToLoadFrom = new URL[] { url };
 		loader = new URLClassLoader(urlsToLoadFrom);
 		classes = new LinkedList<Class>();
 		File dir = new File(
-				"D:\\eclipse-workspace\\zad2\\algorytmy\\zad2");
+				"C:\\Users\\pwojc\\OneDrive\\Dokumenty\\GitHub\\Studia_PWR\\programowanie w jêzyku java\\zad2\\algorytmy\\zad2");
 		File[] directListing = dir.listFiles();
 		System.out.println("Klasy zaladowane ");
 		System.out.println("Dostepne algorytmy: ");
