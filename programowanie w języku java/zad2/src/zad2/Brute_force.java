@@ -1,11 +1,9 @@
 package zad2;
 
-
-
-
+import java.util.LinkedList;
 
 public class Brute_force {
-	
+
 	private static boolean[] solution;
 	private static boolean[] current;
 	private static float curBestValue;
@@ -14,6 +12,16 @@ public class Brute_force {
 	private static float curValue;
 
 	public Brute_force(int maxWeight, int numItems) {
+		// this.maxWeight = maxWeight;
+		// this.numItems = numItems;
+		current = new boolean[numItems];
+		solution = new boolean[numItems];
+		curBestValue = 0;
+		curBestWeight = 0;
+		curWeight = 0;
+		curValue = 0;
+		algorithm(numItems - 1, maxWeight, numItems);
+		result(numItems);
 
 	}
 
@@ -39,7 +47,7 @@ public class Brute_force {
 				if (current[i]) {
 					curWeight += Threads.list.get(i).weight;
 					curValue += Threads.list.get(i).value;
-					
+
 				}
 			}
 
@@ -65,20 +73,20 @@ public class Brute_force {
 	public static String result(int numItems) {
 		String items = " ";
 		String name = " Brute force ";
-		for (int i = 0; i < numItems; i++) {
+		for (int i = 0; i < numItems-1; i++) {
 			if (solution[i]) {
-				items += Threads.list.get(i).index + " ";
+				items += Threads.list.get(i + 1).index + " ";
+				
 			}
 			
 			
 		}
 		String result2 = ("Rozwiazano uzywajac " + name + " Wynik: " + curBestValue + " Waga: " + curBestWeight
 				+ " Przedmioty: " + items);
-		System.out.println(result2);
-		//Threads.result = new LinkedList<Solution>();
+		Threads.result = new LinkedList<Solution>();
 		Threads.result.add(new Solution(items, curBestWeight));
 
-		
+		System.out.println(result2);
 		return result2;
 	}
 

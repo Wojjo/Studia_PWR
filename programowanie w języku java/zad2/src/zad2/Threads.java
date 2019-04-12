@@ -1,7 +1,6 @@
 package zad2;
 
 import java.lang.ref.SoftReference;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -13,27 +12,25 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 public class Threads extends Thread {
-	static List<Items> list;
-	static List<Solution> result = new LinkedList<Solution>();;
+	static List<Items> list = new LinkedList<Items>();
+	static List<Solution> result;
 	private ArrayList<Thread> listOfThreads;
 	Map<Long, Object> map;
+	private static int value, weight;
 	private Random random;
 	private long seed;
 	private boolean stop;
 	SoftReference<List<Solution>> reference;
 	protected final Logger log = Logger.getLogger(getClass().getName());
-	int numberOfThreads = 3;
+	int numberOfThreads = 3, maxWeight = 30;
 	static int numItems = 15;
 
 	public static List<Items> generate_items(long bean) {
-		list = new LinkedList<Items>();
-		long value, weight;
-		for (int i = 0; i < 15; i++) {
-			value=0; weight=0;
-			value = ((bean / 2) * i) + 1;
-			weight = ((bean / 10) * i) + 1;
+		int a = (int) (bean + 1) / 10;
+		for (int i = 0; i < 24; i++) {
+			value = ((a / 2) * i) + 1;
+			weight = ((a / 10) * i) + 1;
 			list.add(new Items(i, value, weight));
 		}
 		return list;
@@ -51,7 +48,7 @@ public class Threads extends Thread {
 		final long[] failReferences = new long[3];
 		listOfThreads = new ArrayList<Thread>();
 		random = new Random();
-		int maxWeight = 150;
+
 		map.put(0L, 0);
 		map.put(1L, 0);
 		
@@ -60,7 +57,7 @@ public class Threads extends Thread {
 			listOfThreads.add(new Thread(new Runnable() {
 				public void run() {
 					while (!stop) {
-						System.gc();
+						//System.gc();
 						seed = Math.abs(random.nextLong() % 100);
 						
 						synchronized (map) {
