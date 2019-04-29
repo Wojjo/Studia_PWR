@@ -1,9 +1,10 @@
 import java.awt.*;
 import java.io.*;
 import java.beans.*;
-import java.awt.event.*;
 
 public class CBeanWiazane extends Label {
+
+	private static final long serialVersionUID = 1L;
 	private String a;
 	private transient PropertyChangeSupport propertyChangeListeners = new PropertyChangeSupport(this);
 

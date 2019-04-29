@@ -3,34 +3,34 @@ import java.beans.*;
 import java.lang.String;
 
 public class CBeanOgranicz extends TextField {
+
+	private static final long serialVersionUID = 1L;
 	String salary[] = new String[11];
 	String oldSalary[] = new String[11];
-	private String temp;
-	private PropertyChangeSupport zmiany = new PropertyChangeSupport(this);
+	private PropertyChangeSupport changes = new PropertyChangeSupport(this);
 	private VetoableChangeSupport veto = new VetoableChangeSupport(this);
+
 	public CBeanOgranicz() {
 	}
 
-	private void jbInit() {
-	}
-
+	// metoda ustawia wynagrodzenie pracownika
 	public void setSalary(String newSalary, int i) throws PropertyVetoException {
 		oldSalary[i] = salary[i];
 		veto.fireVetoableChange("salary", oldSalary[i], newSalary);
 		this.salary[i] = newSalary;
-		zmiany.firePropertyChange("salary", oldSalary[i], newSalary);
+		changes.firePropertyChange("salary", oldSalary[i], newSalary);
 	}
-
+	// metoda zwraca wynagrodzenie danego pracownika
 	public String getSalary(int i) {
 		return salary[i];
 	}
 
 	public void removePropertyChangeListener(PropertyChangeListener l) {
-		zmiany.removePropertyChangeListener(l);
+		changes.removePropertyChangeListener(l);
 	}
 
 	public void addPropertyChangeListener(PropertyChangeListener l) {
-		zmiany.addPropertyChangeListener(l);
+		changes.addPropertyChangeListener(l);
 	}
 
 	public void removeVetoableChangeListener(VetoableChangeListener l) {
@@ -41,5 +41,4 @@ public class CBeanOgranicz extends TextField {
 		veto.addVetoableChangeListener(l);
 	}
 
-	
 }

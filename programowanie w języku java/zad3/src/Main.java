@@ -1,14 +1,11 @@
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
 
 public class Main {
 
-	private JFrame frame;
+	public JFrame frame;
 
-	
-	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -22,21 +19,29 @@ public class Main {
 		});
 	}
 
-	
 	public Main() {
 		initialize();
 	}
 
-	
-	private void initialize()
-	{
+	 void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 700, 352);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Window window = new Window();
-		frame.getContentPane().add(window, BorderLayout.CENTER);
+		
+		CBeanStart beanStart = new CBeanStart();
+		frame.getContentPane().add(beanStart, BorderLayout.WEST);
+		
+		CBeanWindow beanWindow = new CBeanWindow();
+		frame.getContentPane().add(beanWindow, BorderLayout.CENTER);
+		
+		
+		
+		
+		
+		
+		
+		
 	
 	}
-	
 
 }

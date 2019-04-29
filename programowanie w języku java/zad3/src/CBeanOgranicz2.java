@@ -1,17 +1,14 @@
-import java.awt.*;
 import java.beans.*;
 import java.lang.String;
 
-public class CBeanOgranicz2 extends Checkbox implements VetoableChangeListener {
+public class CBeanOgranicz2 implements VetoableChangeListener {
+
 	String a;
 	String b = new String("");
 	int v;
 	public CBeanOgranicz2() {
 	}
-
-	private void jbInit() {
-	}
-
+	// metoda zwraca 
 	public void vetoableChange(PropertyChangeEvent evt) throws PropertyVetoException {
 		a = evt.getNewValue().toString();
 		v = Integer.parseInt(a);

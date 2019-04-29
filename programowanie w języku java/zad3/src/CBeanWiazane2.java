@@ -11,9 +11,6 @@ public class CBeanWiazane2 extends Label implements PropertyChangeListener {
 	public CBeanWiazane2() {
 	}
 
-	private void jbInit() {
-	}
-
 	public void propertyChange(PropertyChangeEvent evt) {
 		this.setText(evt.getNewValue().toString());
 
