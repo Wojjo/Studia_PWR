@@ -8,7 +8,7 @@ public class CBeanOgranicz2 implements VetoableChangeListener {
 	int v;
 	public CBeanOgranicz2() {
 	}
-	// metoda zwraca 
+	// metoda zwraca veto, gdy wynagrodzenie pracownika jest mniejsze niz 2500
 	public void vetoableChange(PropertyChangeEvent evt) throws PropertyVetoException {
 		a = evt.getNewValue().toString();
 		v = Integer.parseInt(a);

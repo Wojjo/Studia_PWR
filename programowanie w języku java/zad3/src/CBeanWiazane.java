@@ -10,14 +10,15 @@ public class CBeanWiazane extends Label {
 
 	public CBeanWiazane() {
 	}
-
+	// metoda z wlasciwoscia wiazana
+	// metoda ustawia dane na temat autora programu
 	public void setAuthor(String author) {
 		String old = a;
 		this.a = author;
 		propertyChangeListeners.firePropertyChange("author", old, author);
 	}
-
-	public String getZmiennawiazana() {
+	// metoda zwraca dane na temat autora programu
+	public String getAuthor() {
 		return a;
 	}
 

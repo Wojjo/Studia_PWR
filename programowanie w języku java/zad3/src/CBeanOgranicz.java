@@ -12,7 +12,7 @@ public class CBeanOgranicz extends TextField {
 
 	public CBeanOgranicz() {
 	}
-
+	// metoda z wlasciwoscia ograniczona
 	// metoda ustawia wynagrodzenie pracownika
 	public void setSalary(String newSalary, int i) throws PropertyVetoException {
 		oldSalary[i] = salary[i];

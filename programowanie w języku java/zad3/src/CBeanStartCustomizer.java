@@ -177,6 +177,7 @@ public class CBeanStartCustomizer extends JTabbedPane implements Customizer {
 		firePropertyChange("iconColor", oldValue, newValue);
 	}
 
+	//
 	public void setObject(Object obj) {
 		bean = (CBeanStart) obj;
 

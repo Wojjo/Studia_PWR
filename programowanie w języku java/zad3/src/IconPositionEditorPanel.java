@@ -2,7 +2,6 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.text.*;
-import java.lang.reflect.*;
 import java.beans.*;
 import javax.swing.*;
 import javax.swing.event.*;
@@ -11,6 +10,14 @@ import javax.swing.event.*;
 public class IconPositionEditorPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
+	
+	private PropertyEditorSupport editor;
+	private Integer[] array;
+	private NumberFormat fmt = NumberFormat.getNumberInstance();
+	private JTextField valueField = new JTextField(12);
+	private JButton valueButton = new JButton("Change");
+	private JList<Integer> elementList = new JList<Integer>();
+	private ListModel model = new ListModel();
 
 	public IconPositionEditorPanel(PropertyEditorSupport ed) {
 		editor = ed;
@@ -22,20 +29,9 @@ public class IconPositionEditorPanel extends JPanel {
 		gbc.weightx = 100;
 		gbc.weighty = 0;
 		gbc.fill = GridBagConstraints.HORIZONTAL;
-
-		add(sizeField, gbc, 0, 0, 1, 1);
 		add(valueField, gbc, 0, 1, 1, 1);
-
 		gbc.fill = GridBagConstraints.NONE;
-
-		add(sizeButton, gbc, 1, 0, 1, 1);
 		add(valueButton, gbc, 1, 1, 1, 1);
-
-		sizeButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				changeSize();
-			}
-		});
 
 		valueButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
@@ -59,7 +55,7 @@ public class IconPositionEditorPanel extends JPanel {
 			}
 		});
 
-		elementList.setModel((DoubleArrayListModel) model);
+		elementList.setModel((ListModel) model);
 		elementList.setSelectedIndex(0);
 	}
 
@@ -71,27 +67,7 @@ public class IconPositionEditorPanel extends JPanel {
 		add(c, gbc);
 	}
 
-	
-	public void changeSize() {
-		fmt.setParseIntegerOnly(true);
-		int s = 0;
-		try {
-			s = fmt.parse(sizeField.getText()).intValue();
-			if (s < 0)
-				throw new ParseException("Out of bounds", 0);
-		} catch (ParseException e) {
-			JOptionPane.showMessageDialog(this, "" + e, "Input Error", JOptionPane.WARNING_MESSAGE);
-			sizeField.requestFocus();
-			return;
-		}
-		if (s == array.length)
-			return;
-		setArray((Integer[]) arrayGrow(array, s));
-		editor.setValue(array);
-		editor.firePropertyChange();
-	}
-
-	
+		
 	public void changeValue() {
 		int v = 0;
 		fmt.setParseIntegerOnly(false);
@@ -114,7 +90,6 @@ public class IconPositionEditorPanel extends JPanel {
 		else
 			array = v;
 		model.setArray(array);
-		sizeField.setText("" + array.length);
 		if (array.length > 0) {
 			valueField.setText("" + array[0]);
 			elementList.setSelectedIndex(0);
@@ -144,31 +119,10 @@ public class IconPositionEditorPanel extends JPanel {
 	}
 
 	
-	private static Object arrayGrow(Object a, int newLength) {
-		Class<? extends Object> cl = a.getClass();
-		if (!cl.isArray())
-			return null;
-		Class<?> componentType = a.getClass().getComponentType();
-		int length = Array.getLength(a);
-
-		Object newArray = Array.newInstance(componentType, newLength);
-		System.arraycopy(a, 0, newArray, 0, Math.min(length, newLength));
-		return newArray;
-	}
-
-	private PropertyEditorSupport editor;
-	private Integer[] array;
-	private NumberFormat fmt = NumberFormat.getNumberInstance();
-	private JTextField sizeField = new JTextField(4);
-	private JTextField valueField = new JTextField(12);
-	private JButton sizeButton = new JButton("Resize");
-	private JButton valueButton = new JButton("Change");
-	private JList<Integer> elementList = new JList<Integer>();
-	private DoubleArrayListModel model = new DoubleArrayListModel();
 }
 
 
-class DoubleArrayListModel extends AbstractListModel<Integer> {
+class ListModel extends AbstractListModel<Integer> {
 
 	private static final long serialVersionUID = 1L;
 

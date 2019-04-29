@@ -3,7 +3,7 @@ import java.awt.*;
 import java.beans.*;
 import java.util.StringTokenizer;
 
-
+// Klasa umozliwia zmiane pozycji ikony w windowsBuilder
 public class IconPositionEditor extends PropertyEditorSupport {
 	public Component getCustomEditor() {
 		return new IconPositionEditorPanel(this);
@@ -31,6 +31,7 @@ public class IconPositionEditor extends PropertyEditorSupport {
 		return false;
 	}
 
+	// metoda zwraca pozycje ikony w postaci tekstu
 	public String getAsText() {
 		Integer[] iconPosition = (Integer[]) getValue();
 		StringBuffer s = new StringBuffer();
@@ -42,6 +43,7 @@ public class IconPositionEditor extends PropertyEditorSupport {
 		return s.toString();
 	}
 
+	// metoda ustawia pozycje ikony
 	public void setAsText(String s) {
 		StringTokenizer tokenizer = new StringTokenizer(s);
 		int i = 0;
@@ -58,5 +60,5 @@ public class IconPositionEditor extends PropertyEditorSupport {
 		setValue(iconPosition);
 
 	}
-	
+
 }

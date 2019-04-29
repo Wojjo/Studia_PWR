@@ -31,9 +31,6 @@ public class Main {
 		CBeanStart beanStart = new CBeanStart();
 		frame.getContentPane().add(beanStart, BorderLayout.WEST);
 		
-		CBeanWindow beanWindow = new CBeanWindow();
-		frame.getContentPane().add(beanWindow, BorderLayout.CENTER);
-		
 		
 		
 		
