@@ -1,0 +1,6 @@
+4,5,2019,Wazne,Spotkanie o godzinie 12
+14,5,2019,Wazne2 Spotkanie,Spotkanie o godzinie 12
+12,4,2019,Wazne3 Spotkanie,Spotkanie o godzinie 12
+4,2,2019,Wazne4 Spotkanie,Spotkanie o godzinie 12
+4,5,2015,Wazne5 Spotkanie,Spotkanie o godzinie 12
+5,5,2019,Superancka,notatka ekstra
