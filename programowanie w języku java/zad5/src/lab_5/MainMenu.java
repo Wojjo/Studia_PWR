@@ -16,10 +16,6 @@ public class MainMenu {
 	
 	private void initVariables() {
 		
-		
-	//	arrayListWorkers = new ArrayList<Worker>();
-	//	arrayListAddresses = new ArrayList<Address>();
-	//	arrayListPersonalData = new ArrayList<PersonalData>();
 		Connect oracle = new Connect();
 		oracle.db_connect();
 		arrayListWorkers = oracle.db_loadData_workers();

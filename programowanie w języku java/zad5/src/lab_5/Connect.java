@@ -8,22 +8,22 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-//aby utowrzyc polaczenie z baza danych nalezy:
-//1. pobrac oracle jdbc ze strony https://www.oracle.com/technetwork/database/application-development/jdbc/downloads/index.html
-//2. dodac jdbc do projektu: W tym celu klikamy PPM na nazwe naszego projektu ->Build Path->Configure Build Path,
-//przechodzimy do zakladki Libraries->Add External JARs i wybieramy biblioteke ojbc8.jar z katalogu do ktorego ja zapisalismy.
-//3. sprawdzamy dane dotyczace naszej bazy danych: musimy znalezc plik o nazwie tnsnames.ora jest on w katalogu bazy oracle w folderze \NETWORK\ADMIN\tnsnames.ora
-//4. tworzymy baze w oracle sql developer
-//connection_name: dowolone,
-//username: system,
-//password: haslo przy instalacji bazy
-//connection type: basic
-//role default
-//hostname: localhost
-//Port: odczytac z tnsnames.ora
-//SID: odczytac z tnsnames.ora = SERVICE_NAME
-//po utworzeniu takiej bazy mozna sie z nia polaczyc 
-
+/*aby utowrzyc polaczenie z baza danych nalezy:
+1. pobrac oracle jdbc ze strony https://www.oracle.com/technetwork/database/application-development/jdbc/downloads/index.html
+2. dodac jdbc do projektu: W tym celu klikamy PPM na nazwe naszego projektu ->Build Path->Configure Build Path,
+przechodzimy do zakladki Libraries->Add External JARs i wybieramy biblioteke ojbc8.jar z katalogu do ktorego ja zapisalismy.
+3. sprawdzamy dane dotyczace naszej bazy danych: musimy znalezc plik o nazwie tnsnames.ora jest on w katalogu bazy oracle w folderze \NETWORK\ADMIN\tnsnames.ora
+4. tworzymy baze w oracle sql developer
+connection_name: dowolone,
+username: system,
+password: haslo przy instalacji bazy
+connection type: basic
+role default
+hostname: localhost
+Port: odczytac z tnsnames.ora
+SID: odczytac z tnsnames.ora = SERVICE_NAME
+po utworzeniu takiej bazy mozna sie z nia polaczyc 
+*/
 public class Connect {
 
 	static Connection connection = null;
@@ -179,6 +179,23 @@ public class Connect {
 		}
 
 		return arrayListWorkers;
+	}
+
+	public boolean db_update_Worker(int id, int salary) {
+		try {
+			PreparedStatement prepStmt = connection
+					.prepareStatement("UPDATE PRACOWNIK SET PENSJA = ? WHERE ID_PRACOWNIKA = ?");
+
+			prepStmt.setInt(1, salary);
+			prepStmt.setInt(2, id);
+			prepStmt.executeUpdate();
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			System.out.println("update worker");
+			return false;
+		}
+		return true;
 	}
 
 }
