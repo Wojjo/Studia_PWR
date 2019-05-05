@@ -40,9 +40,8 @@ public class Worker extends PersonalData {
 		this.personID = personID;
 	}
 
-	@Override
 	public String toString() {
-		return "Worker [workerID=" + workerID + ", salary=" + salary + ", personID=" + personID + "]";
+		return "Pracownik: [ID pracownika: " + workerID + ", Wyplata: " + salary + ", ID osoby: " + personID + " ] ";
 	}
 
 }

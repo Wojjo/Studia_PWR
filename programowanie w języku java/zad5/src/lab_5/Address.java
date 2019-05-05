@@ -63,8 +63,8 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return addressID + ". !&#*&% " + cityName + ". !&#*&% "
-				+ street + ". !&#*&% " + houseNumber + ". !&#*&% " + flatNumber + ".";
+		return "Dane adresowe: [ " + "ID adresu: " + addressID + ", Miasto: " + cityName + ", Ulica: "
+				+ street + ", Numer domu: " + houseNumber + ", Numer mieszkania: " + flatNumber + " ] ";
 	}
 	
 	

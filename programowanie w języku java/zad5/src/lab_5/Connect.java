@@ -3,7 +3,10 @@ package lab_5;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 //aby utowrzyc polaczenie z baza danych nalezy:
 //1. pobrac oracle jdbc ze strony https://www.oracle.com/technetwork/database/application-development/jdbc/downloads/index.html
@@ -100,6 +103,82 @@ public class Connect {
 			return false;
 		}
 		return true;
+	}
+
+	public ArrayList<Address> db_loadData_addresses() {
+		ArrayList<Address> arrayListAddresses = new ArrayList<Address>();
+
+		try {
+			String queryAdress = "SELECT ID_ADRESU, MIEJSCOWOSC, ULICA, NUMER_DOMU, NUMER_MIESZKANIA"
+					+ " FROM DANE_ADRESOWE";
+			Statement stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery(queryAdress);
+
+			while (rs.next()) {
+				int address_id = rs.getInt("ID_ADRESU");
+				String city_name = rs.getString("MIEJSCOWOSC");
+				String street = rs.getString("ULICA");
+				int house_number = rs.getInt("NUMER_DOMU");
+				int flat_number = rs.getInt("NUMER_MIESZKANIA");
+
+				arrayListAddresses.add(new Address(address_id, city_name, street, house_number, flat_number));
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			System.out.println("adres");
+		}
+
+		return arrayListAddresses;
+	}
+
+	public ArrayList<PersonalData> db_loadData_personalData() {
+		ArrayList<PersonalData> arrayListPersonalData = new ArrayList<PersonalData>();
+
+		try {
+			String queryPerson = "SELECT ID_OSOBY, IMIE, NAZWISKO, ID_ADRESU FROM DANE_OSOBOWE";
+			Statement stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery(queryPerson);
+
+			while (rs.next()) {
+				int person_ID = rs.getInt("ID_OSOBY");
+				String first_name = rs.getString("IMIE");
+				String last_name = rs.getString("NAZWISKO");
+				int address_ID = rs.getInt("ID_ADRESU");
+
+				arrayListPersonalData.add(new PersonalData(person_ID, first_name, last_name, address_ID));
+
+			}
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			System.out.println("person");
+		}
+
+		return arrayListPersonalData;
+	}
+
+	public ArrayList<Worker> db_loadData_workers() {
+		ArrayList<Worker> arrayListWorkers = new ArrayList<Worker>();
+
+		try {
+			String queryClient = "SELECT ID_PRACOWNIKA, ID_OSOBY, PENSJA FROM PRACOWNIK";
+			Statement stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery(queryClient);
+
+			while (rs.next()) {
+				int worker_ID = rs.getInt("ID_PRACOWNIKA");
+				int person_ID = rs.getInt("ID_OSOBY");
+				int salary = rs.getInt("PENSJA");
+
+				arrayListWorkers.add(new Worker(worker_ID, salary, person_ID));
+
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			System.out.println("worker");
+		}
+
+		return arrayListWorkers;
 	}
 
 }

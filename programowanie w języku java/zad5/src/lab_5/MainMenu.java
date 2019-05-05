@@ -4,12 +4,32 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainMenu {
-	ArrayList<Worker> arrayListWorkers = new ArrayList<Worker>();
-	ArrayList<Address> arrayListAddresses =  new ArrayList<Address>();
-	ArrayList<PersonalData> arrayListPersonalData = new ArrayList<PersonalData>();
+	static ArrayList<Worker> arrayListWorkers;
+	static ArrayList<Address> arrayListAddresses;
+	static ArrayList<PersonalData> arrayListPersonalData;
 	ManageWorker options;
-
+	
+	public MainMenu()
+	{
+		initVariables();
+	}
+	
+	private void initVariables() {
+		
+		
+	//	arrayListWorkers = new ArrayList<Worker>();
+	//	arrayListAddresses = new ArrayList<Address>();
+	//	arrayListPersonalData = new ArrayList<PersonalData>();
+		Connect oracle = new Connect();
+		oracle.db_connect();
+		arrayListWorkers = oracle.db_loadData_workers();
+		arrayListAddresses =  oracle.db_loadData_addresses();
+		arrayListPersonalData = oracle.db_loadData_personalData();
+		oracle.db_disconnect();
+	}
+	
 	public void menu() {
+		options = new ManageWorker();
 		Scanner scan = new Scanner(System.in);
 		int off = 1;
 		int choose;
@@ -22,14 +42,13 @@ public class MainMenu {
 			choose = scan.nextInt();
 			switch (choose) {
 			case 1:
-
+				showData();
 				break;
 			case 2:
-				options = new ManageWorker();
 				options.createWorker();
 				break;
 			case 3:
-
+				options.updateWorker();
 				break;
 			case 0:
 				off = 0;
@@ -42,8 +61,19 @@ public class MainMenu {
 		}
 
 	}
+	
+	
+	public void showData()
+	{	
+		for(int i=0; i < arrayListWorkers.size(); i++)
+		{
+			System.out.println(arrayListWorkers);
+			System.out.println(arrayListAddresses);
+			System.out.println(arrayListPersonalData);
+		}
+	}
 
-	public ArrayList<Address> getArrayListAddresses() {
+	public static ArrayList<Address> getArrayListAddresses() {
 		return arrayListAddresses;
 	}
 
@@ -51,7 +81,7 @@ public class MainMenu {
 		this.arrayListAddresses = arrayListAddresses;
 	}
 
-	public ArrayList<Worker> getArrayListWorkers() {
+	public static ArrayList<Worker> getArrayListWorkers() {
 		return arrayListWorkers;
 	}
 
@@ -59,7 +89,7 @@ public class MainMenu {
 		this.arrayListWorkers = arrayListWorkers;
 	}
 
-	public ArrayList<PersonalData> getArrayListPersonalData() {
+	public static ArrayList<PersonalData> getArrayListPersonalData() {
 		return arrayListPersonalData;
 	}
 

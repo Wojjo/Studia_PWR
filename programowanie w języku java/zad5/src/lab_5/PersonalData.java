@@ -53,8 +53,8 @@ public class PersonalData {
 
 	@Override
 	public String toString() {
-		return personID + " !&#*&% " + firstName + " !&#*&% " + lastName + " !&#*&% " + " !&#*&% " + " !&#*&% "
-				+ addressID + " !&#*&% ";
+		return "Dane osobowe: [" +"ID osoby: " + personID + ", Imie " + firstName + ", Nazwisko " + lastName + ", ID adresu "
+				+ addressID + "]";
 	}
 
 }
