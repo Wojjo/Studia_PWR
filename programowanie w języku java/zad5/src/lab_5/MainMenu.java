@@ -4,30 +4,28 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainMenu {
-	static ArrayList<Worker> arrayListWorkers;
-	static ArrayList<Address> arrayListAddresses;
-	static ArrayList<PersonalData> arrayListPersonalData;
-	static ManageWorker options;
+	ArrayList<Worker> arrayListWorkers = new ArrayList<Worker>();
+	ArrayList<Address> arrayListAddresses =  new ArrayList<Address>();
+	ArrayList<PersonalData> arrayListPersonalData = new ArrayList<PersonalData>();
+	ManageWorker options;
 
-	public static void menu() {
-		arrayListWorkers = new ArrayList<Worker>();
-		arrayListAddresses = new ArrayList<Address>();
-		arrayListPersonalData = new ArrayList<PersonalData>();
-		System.out.println("1. Wyswietl dane pracownikow");
-		System.out.println("2. Dodaj pracownika");
-		System.out.println("3. Modyfikuj dane pracownikow");
-		System.out.println("0. Zakoncz");
-		System.out.print("Wybierz => ");
+	public void menu() {
 		Scanner scan = new Scanner(System.in);
 		int off = 1;
 		int choose;
 		while (off != 0) {
+			System.out.println("\n1. Wyswietl dane pracownikow");
+			System.out.println("2. Dodaj pracownika");
+			System.out.println("3. Modyfikuj dane pracownikow");
+			System.out.println("0. Zakoncz");
+			System.out.print("Wybierz => ");
 			choose = scan.nextInt();
 			switch (choose) {
 			case 1:
 
 				break;
 			case 2:
+				options = new ManageWorker();
 				options.createWorker();
 				break;
 			case 3:

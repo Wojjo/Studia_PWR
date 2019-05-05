@@ -50,12 +50,12 @@ public class Connect {
 		}
 	}
 
-	public boolean db_createAccount(int workerID, int salary, int personID) {
+	public boolean db_createWorker(int workerID, int salary, int personID) {
 		try {
-			PreparedStatement prepStmt = connection.prepareStatement("INSERT INTO KONTO VALUES (?, ?, ?)");
+			PreparedStatement prepStmt = connection.prepareStatement("INSERT INTO PRACOWNIK VALUES (?, ?, ?)");
 			prepStmt.setInt(1, workerID);
-			prepStmt.setInt(2, salary);
-			prepStmt.setInt(3, personID);
+			prepStmt.setInt(2, personID);
+			prepStmt.setInt(3, salary);
 			prepStmt.execute();
 
 		} catch (SQLException e) {
@@ -88,7 +88,7 @@ public class Connect {
 
 		try {
 
-			PreparedStatement prepStmt = connection.prepareStatement("INSERT INTO Dane_Osobowe VALUES (?, ?, ?, ?)");
+			PreparedStatement prepStmt = connection.prepareStatement("INSERT INTO DANE_OSOBOWE VALUES (?, ?, ?, ?)");
 			prepStmt.setInt(1, personID);
 			prepStmt.setString(2, name);
 			prepStmt.setString(3, last_name);
