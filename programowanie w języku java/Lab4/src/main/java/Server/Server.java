@@ -1,11 +1,10 @@
 package Server;
 
-import KnapsackProblem.BruteForce;
-import KnapsackProblem.Greedy;
-import KnapsackProblem.Item;
-import KnapsackProblem.Knapsack;
-
-import Register.ServersRegistryInterface;
+import Algorithms.GreedyAlgorithm;
+import Algorithms.Item;
+import Algorithms.Knapsack;
+import Algorithms.BruteForceAlgorithm;
+import ServersRegistry.ServersRegistryInterface;
 
 import java.io.Serializable;
 import java.rmi.RemoteException;
@@ -20,7 +19,7 @@ public class Server extends UnicastRemoteObject implements ServerInterface, Seri
     private Registry registry;
     private Registry serversListRegistry;
     private ServersRegistryInterface serversRegistryInterface;
-    private ServerInfo serverDesc;
+    private ServerDesc serverDesc;
     private int port = 1100;
 
     public Server() throws RemoteException {
@@ -30,17 +29,17 @@ public class Server extends UnicastRemoteObject implements ServerInterface, Seri
 
             while(port < 1300) {
                 try {
-                    System.out.println("Port: " + port);
+                    System.out.println("halo" + port);
                     registry = LocateRegistry.createRegistry(port);
                     registry.rebind("Server" + (port - 1099), this);
 
                     String algorithmDesc;
                     if(port % 2 == 0)
-                        algorithmDesc = "Algorytm Zachlanny";
+                        algorithmDesc = "Algorytm Greedy";
                     else
-                        algorithmDesc = "Algorytm Losowy";
+                        algorithmDesc = "Algorytm Brute Force";
 
-                    serverDesc = new ServerInfo("Server" + (port - 1099), port, algorithmDesc);
+                    serverDesc = new ServerDesc("Server" + (port - 1099), port, algorithmDesc);
                     finished = true;
                     break;
                 }catch(Exception e){
@@ -61,14 +60,14 @@ public class Server extends UnicastRemoteObject implements ServerInterface, Seri
     }
     public String solve(ArrayList<Item> listOfItems, int capacity) {
         if(port % 2 == 0) {
-            Greedy greedy = new Greedy(listOfItems, capacity);
-            greedy.solve();
-            return greedy.solution();
+            GreedyAlgorithm greedyAlgorithm = new GreedyAlgorithm(listOfItems, capacity);
+            greedyAlgorithm.solve();
+            return greedyAlgorithm.description();
         }
         else{
-            BruteForce bf = new BruteForce(listOfItems, capacity);
-            bf.solve();
-            return bf.solution();
+            BruteForceAlgorithm randomAlgorithm = new BruteForceAlgorithm(listOfItems, capacity);
+            randomAlgorithm.solve();
+            return randomAlgorithm.description();
         }
     }
 
