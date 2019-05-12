@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="442.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NetworkCommunication">
+   <children>
+      <TextArea layoutX="550.0" layoutY="38.0" prefHeight="170.0" prefWidth="200.0" />
+      <TextField layoutX="275.0" layoutY="44.0" prefHeight="26.0" prefWidth="200.0" promptText="Podaj nazwe odbiorcy" />
+      <TextArea layoutY="44.0" prefHeight="170.0" prefWidth="200.0" />
+      <TextArea layoutX="15.0" layoutY="265.0" prefHeight="170.0" prefWidth="720.0" />
+      <Button layoutX="379.0" layoutY="166.0" mnemonicParsing="false" text="Wyslij" />
+      <Button layoutX="290.0" layoutY="227.0" mnemonicParsing="false" text="Pokaz tresc wiadomosci" />
+      <Button layoutX="379.0" layoutY="102.0" mnemonicParsing="false" text="Wyslij" />
+      <Label layoutX="40.0" layoutY="23.0" text="Odebrane wiadomosci" />
+      <Label layoutX="590.0" layoutY="14.0" text="Wprowadz wiadomosc" />
+      <Label layoutX="321.0" layoutY="77.0" text="Tryb adresacji:" />
+      <Label layoutX="276.0" layoutY="106.0" text="- Unicast" />
+      <Label layoutX="270.0" layoutY="170.0" text="- Broadcast" />
+      <Label layoutX="343.0" layoutY="14.0" text="Nazwa" />
+   </children>
+</AnchorPane>
