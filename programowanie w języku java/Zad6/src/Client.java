@@ -9,11 +9,14 @@ import java.net.Socket;
 import java.util.*;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.xml.soap.*;
 
 public class Client extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	private JFrame mainFrame;
+	private JPanel contentPane;
 	private int serverPorts;
 	private int[] ports;
 	private String[] names;
@@ -49,13 +52,15 @@ public class Client extends JFrame {
 		Socket sock = new Socket(host, portt);
 		System.out.println("Klient " + name + " polaczyl sie do portu " + portt);
 		SOAPMessage myMsg = factory.createMessage();
-		SOAPPart myPart = myMsg.getSOAPPart();	// The container for the SOAP-specific portion of a SOAPMessage object. All messages are required to have a SOAP part.
-		SOAPEnvelope myEnv = myPart.getEnvelope();	// A SOAPPart object contains a SOAPEnvelope object, which in turn contains a SOAPBody object and a SOAPHeader object.
+		SOAPPart myPart = myMsg.getSOAPPart(); // The container for the SOAP-specific portion of a SOAPMessage object.
+												// All messages are required to have a SOAP part.
+		SOAPEnvelope myEnv = myPart.getEnvelope(); // A SOAPPart object contains a SOAPEnvelope object, which in turn
+													// contains a SOAPBody object and a SOAPHeader object.
 		SOAPBody myBody = myEnv.getBody();
 		SOAPHeader myHeader = myEnv.getHeader();
 		myHeader.addHeaderElement(myEnv.createName("HostNadawca", "", sender));
 		myHeader.addHeaderElement(myEnv.createName("HostOdbiorca", "", receiver));
-		myHeader.addHeaderElement(myEnv.createName("Typ adresacji", "", mode));
+		myHeader.addHeaderElement(myEnv.createName("TypAdresacji", "", mode));
 		myBody.addBodyElement(myEnv.createName("Message", "", msg));
 		PrintStream out = new PrintStream(sock.getOutputStream(), true);
 		myMsg.writeTo(out);
@@ -67,13 +72,13 @@ public class Client extends JFrame {
 	public void unicastWay(String hostS, String hostR, String mode, String message) throws Exception {
 		if (name.equals(hostR)) {
 			saveFromFile("D:/eclipse-workspace/Zad6/log/" + serverPorts + ".txt", hostS, message);
-		}
-		else {
+		} else {
 			saveFromFile("D:/eclipse-workspace/Zad6/log/" + serverPorts + ".txt", "[" + hostS + "]",
 					"Wiadomosc przeslana dalej");
 			sendMessage(message, hostR, hostS, mode);
 		}
 	}
+
 	// wyslanie wiadomosci do wszystkich oprocz hosta ktory nadaje wiadomosc
 	public void broadcastWay(String hostS, String hostR, String mode, String message) throws Exception {
 		if (!name.equals(hostS)) {
@@ -151,31 +156,82 @@ public class Client extends JFrame {
 
 	private void initComponents() {
 
-		jLabel1 = new javax.swing.JLabel();
-		jLabel2 = new javax.swing.JLabel();
-		nameText = new javax.swing.JTextField();
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// setBounds(200, 200, 590, 620);
+		setBounds(200, 200, 590, 620);
+		setLocationRelativeTo(null);
+		contentPane = new JPanel();
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
 
+		// nazwa odbiorcy
+		jLabel1 = new javax.swing.JLabel();
+		jLabel1.setBounds(20, 10, 100, 30);
+		jLabel1.setText("Nazwa odbiorcy:");
+		contentPane.add(jLabel1);
+
+		// pole do wpisania odbiorcy
+		nameText = new javax.swing.JTextField();
+		nameText.setBounds(20, 50, 150, 30);
+		contentPane.add(nameText);
+
+		// wprowadz wiad
+		jLabel2 = new javax.swing.JLabel();
+		jLabel2.setBounds(180, 10, 150, 30);
+		jLabel2.setText("Wprowadz wiadomosc:");
+		contentPane.add(jLabel2);
+
+		// pole odebrane wiad
 		jScrollPane1 = new javax.swing.JScrollPane();
+		jScrollPane1.setBounds(180, 50, 380, 200);
+		contentPane.add(jScrollPane1);
+
+		// tresc wiadomosci
 		sendMessageText = new javax.swing.JTextArea();
+		// sendMessageText.setBounds(180, 250, 200, 200);
+		contentPane.add(sendMessageText);
+
 		sendButton = new javax.swing.JButton();
+		sendButton.setBounds(10, 100, 150, 30);
+		contentPane.add(sendButton);
+
 		sendButton2 = new javax.swing.JButton();
+		sendButton2.setBounds(10, 150, 150, 30);
+		contentPane.add(sendButton2);
+
+		// panel tresci wiadomosci
 		jScrollPane2 = new javax.swing.JScrollPane();
+		jScrollPane2.setBounds(200, 300, 350, 200);
+		contentPane.add(jScrollPane2);
+
+		//
 		textArea = new javax.swing.JTextArea();
+		textArea.setBounds(200, 300, 350, 200);
+		contentPane.add(textArea);
+		// panel odebrane wiadomosci
 		jScrollPane3 = new javax.swing.JScrollPane();
+		jScrollPane3.setBounds(10, 300, 150, 200);
+		contentPane.add(jScrollPane3);
+
 		list = new javax.swing.JList<>();
+		// odebrane wiad
 		jLabel3 = new javax.swing.JLabel();
+		jLabel3.setBounds(10, 260, 150, 30);
+		jLabel3.setText("Odebrane wiadomosci");
+		contentPane.add(jLabel3);
+		
+		
 		portLabel = new javax.swing.JLabel();
 		nameLabel = new javax.swing.JLabel();
+		
+		
 		showButton = new javax.swing.JButton();
+		showButton.setBounds(20, 510, 180, 30);
+		contentPane.add(showButton);
+		
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-		jLabel1.setText("Nazwa odbiorcy:");
-
-		jLabel2.setText("Wprowadz wiadomosc:");
-
-		sendMessageText.setColumns(20);
-		sendMessageText.setRows(5);
 		jScrollPane1.setViewportView(sendMessageText);
 
 		sendButton.setText("Wyslij - Unicast");
@@ -194,11 +250,11 @@ public class Client extends JFrame {
 
 		jScrollPane2.setEnabled(false);
 		textArea.setEditable(false);
-		textArea.setColumns(20);
-		textArea.setRows(5);
+	//	textArea.setColumns(20);
+	//	textArea.setRows(5);
 		jScrollPane2.setViewportView(textArea);
 		jScrollPane3.setViewportView(list);
-		jLabel3.setText("Odebrane wiadomosci");
+		// jLabel3.setText("Odebrane wiadomosci");
 		showButton.setText("Wyswietl wiadomosc");
 		showButton.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,114 +262,10 @@ public class Client extends JFrame {
 			}
 		});
 
-		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout
-				.createSequentialGroup()
-				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-						.addGroup(layout.createSequentialGroup().addGap(60, 60, 60).addComponent(sendButton))
-						.addGroup(layout.createSequentialGroup().addGap(60, 60, 60).addComponent(sendButton2))
-						.addGroup(layout.createSequentialGroup().addContainerGap().addGroup(layout
-								.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-								.addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214,
-										javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addGroup(layout.createSequentialGroup()
-										.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-												.addComponent(jLabel1).addComponent(jLabel2))
-										.addGap(18, 18, 18)
-										.addGroup(layout.createParallelGroup().addComponent(nameText, 0,
-												javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-								.addGap(32, 32, 32)
-								.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-										.addComponent(portLabel).addComponent(nameLabel))))
-				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-						.addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-								layout.createSequentialGroup().addComponent(jLabel3).addGap(67, 67, 67))
-						.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-								.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-										.addComponent(jScrollPane2).addComponent(jScrollPane3,
-												javax.swing.GroupLayout.PREFERRED_SIZE, 205,
-												javax.swing.GroupLayout.PREFERRED_SIZE))
-								.addContainerGap())
-						.addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-								layout.createSequentialGroup().addComponent(showButton).addGap(76, 76, 76)))));
-		layout.setVerticalGroup(
-				layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-						.addGroup(
-								layout.createSequentialGroup().addGroup(layout.createParallelGroup(
-										javax.swing.GroupLayout.Alignment.LEADING).addGroup(
-												layout.createSequentialGroup().addGap(0, 0, Short.MAX_VALUE)
-														.addComponent(jScrollPane2,
-																javax.swing.GroupLayout.PREFERRED_SIZE, 153,
-																javax.swing.GroupLayout.PREFERRED_SIZE))
-										.addGroup(layout
-												.createSequentialGroup().addGroup(layout.createParallelGroup(
-														javax.swing.GroupLayout.Alignment.LEADING, false)
-														.addGroup(layout.createSequentialGroup().addContainerGap()
-																.addGroup(layout.createParallelGroup(
-																		javax.swing.GroupLayout.Alignment.BASELINE)
-																		.addComponent(jLabel1).addComponent(nameText,
-																				javax.swing.GroupLayout.PREFERRED_SIZE,
-																				javax.swing.GroupLayout.DEFAULT_SIZE,
-																				javax.swing.GroupLayout.PREFERRED_SIZE))
-																.addGap(18, 18, 18).addGroup(layout.createParallelGroup(
-																		javax.swing.GroupLayout.Alignment.BASELINE)
-																		.addComponent(jLabel2))
-																.addGap(18, 18, 18)
-																.addComponent(
-																		jScrollPane1,
-																		javax.swing.GroupLayout.PREFERRED_SIZE, 161,
-																		javax.swing.GroupLayout.PREFERRED_SIZE)
-																.addPreferredGap(
-																		javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-																.addComponent(sendButton)
-																.addPreferredGap(
-																		javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-																.addComponent(sendButton2))
-														.addGroup(layout.createSequentialGroup().addComponent(portLabel)
-																.addPreferredGap(
-																		javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-																.addGroup(layout.createParallelGroup(
-																		javax.swing.GroupLayout.Alignment.LEADING)
-																		.addGroup(layout.createSequentialGroup()
-																				.addComponent(jLabel3)
-																				.addPreferredGap(
-																						javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-																				.addComponent(
-																						jScrollPane3,
-																						javax.swing.GroupLayout.PREFERRED_SIZE,
-																						javax.swing.GroupLayout.DEFAULT_SIZE,
-																						javax.swing.GroupLayout.PREFERRED_SIZE))
-																		.addComponent(nameLabel))
-																.addPreferredGap(
-																		javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-																		javax.swing.GroupLayout.DEFAULT_SIZE,
-																		Short.MAX_VALUE)
-																.addComponent(showButton).addGap(72, 72, 72)))
-												.addGap(0, 92, Short.MAX_VALUE)))
-										.addContainerGap()));
-
-		pack();
 	}
 
 	public static void main(String args[]) {
-		try {
-			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-				if ("Nimbus".equals(info.getName())) {
-					javax.swing.UIManager.setLookAndFeel(info.getClassName());
-					break;
-				}
-			}
-		} catch (ClassNotFoundException ex) {
-			java.util.logging.Logger.getLogger(Client.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (InstantiationException ex) {
-			java.util.logging.Logger.getLogger(Client.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (IllegalAccessException ex) {
-			java.util.logging.Logger.getLogger(Client.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(Client.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		}
+		
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				new Client().setVisible(true);

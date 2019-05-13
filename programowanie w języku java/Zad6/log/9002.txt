@@ -1,1 +1,6 @@
 A;wiadomosc do wszystkich
+A;sadasdasd
+A;blaadasdadsaaaaaaaa
+[A];Wiadomosc przeslana dalej
+A;wiad do wszystkich
+D;wiad do wszystkich2
