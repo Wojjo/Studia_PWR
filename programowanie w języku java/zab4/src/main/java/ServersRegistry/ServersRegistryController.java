@@ -10,7 +10,6 @@ public class ServersRegistryController {
 
     @FXML private TextArea textAreaServers;
    
-
     public void initialize(){
     }
 

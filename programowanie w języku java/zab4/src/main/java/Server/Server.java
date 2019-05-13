@@ -21,10 +21,10 @@ public class Server extends UnicastRemoteObject implements ServerInterface, Seri
 
 	public Server() throws RemoteException {
 		try {
-			
-			while (port < 1300) {
+			while (port < 9999) {
 				try {
-					System.out.println("Serwer: " + (port - 1099) + " " + port);
+					System.out.println("Server: " + (port - 1099) + " " + port);
+					// rejestracja serwera
 					registry = LocateRegistry.createRegistry(port);
 					registry.rebind("Server" + (port - 1099), this);
 					String algorithm;
@@ -39,7 +39,7 @@ public class Server extends UnicastRemoteObject implements ServerInterface, Seri
 					port++;
 				}
 			}
-
+			
 			serversListRegistry = LocateRegistry.getRegistry(1099);
 			serversRegistryInterface = (ServersRegistryInterface) serversListRegistry.lookup("ListOfServers");
 			serversRegistryInterface.register(serverDesc);

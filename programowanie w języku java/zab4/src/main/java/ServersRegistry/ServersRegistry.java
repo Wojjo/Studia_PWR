@@ -19,10 +19,11 @@ public class ServersRegistry extends UnicastRemoteObject implements ServersRegis
 
     public ServersRegistry() throws RemoteException {
         super();
-        registry = LocateRegistry.createRegistry(1099);
+        registry = LocateRegistry.createRegistry(1099);	// localhost registry port
         registry.rebind("ListOfServers", this);
     }
 
+    // dodanie serwera
     public boolean register(ServerDesc serverDesc) {
         boolean success = servers.add(serverDesc);
         textArea.clear();

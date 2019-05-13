@@ -19,9 +19,12 @@ public class ClientController {
 	public ArrayList<Item> listOfItems = new ArrayList<Item>();
 	private Registry serverRegistry;
 	private ServerInterface serverInterface;
+	private int a = 4;
 
-	@FXML TextArea textAreaResult;
-	@FXML ComboBox<ServerDesc> comboBoxServers;
+	@FXML
+	TextArea textAreaResult;
+	@FXML
+	ComboBox<ServerDesc> comboBoxServers;
 
 	public void initialize() throws RemoteException, NotBoundException {
 		setClient(new Client());
@@ -40,6 +43,7 @@ public class ClientController {
 		return comboBoxServers;
 	}
 
+	// rozwiazanie problemu
 	public void actionSolve() throws RemoteException, NotBoundException {
 		textAreaResult.clear();
 		String serverName = comboBoxServers.getSelectionModel().getSelectedItem().getName();
@@ -49,6 +53,7 @@ public class ClientController {
 		textAreaResult.setText(serverInterface.solve(listOfItems, 1000));
 	}
 
+	// generowanie losowych przedmiotow
 	public void actionGenerateRandom() {
 		int value, weight;
 		Random random = new Random();
@@ -58,12 +63,32 @@ public class ClientController {
 			if (listOfItems.size() < 15) {
 				weight = Math.abs(random.nextInt() % 1000);
 				value = Math.abs(random.nextInt() % 100);
-				
+
 				Item item = new Item(i, weight, value);
 				listOfItems.add(item);
 				textAreaResult.setText(textAreaResult.getText() + i + ":  waga: " + item.getWeight() + " wartosc: "
 						+ item.getValue() + "\n");
 
 			}
+	}
+
+	// generowanie przedmiotow
+	public void actionGenerate() {
+
+		int value, weight;
+		listOfItems.clear();
+		textAreaResult.clear();
+		for (int i = listOfItems.size(); i < 15; i++)
+			if (listOfItems.size() < 15) {
+				weight = 2 * (i + 1 ) * a;
+				value = 3 * (i + 1) * a;
+
+				Item item = new Item(i, weight, value);
+				listOfItems.add(item);
+				textAreaResult.setText(textAreaResult.getText() + i + ":  waga: " + item.getWeight() + " wartosc: "
+						+ item.getValue() + "\n");
+
+			}
+		a++;
 	}
 }
