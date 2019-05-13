@@ -1,6 +1,5 @@
 package Server;
 
-import java.io.IOException;
 import java.io.Serializable;
 
 public class ServerDesc implements Serializable {

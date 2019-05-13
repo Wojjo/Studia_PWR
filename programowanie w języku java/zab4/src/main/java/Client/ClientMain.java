@@ -1,7 +1,5 @@
 package Client;
 
-import ServersRegistry.ServersRegistry;
-import ServersRegistry.ServersRegistryController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

@@ -1,19 +1,12 @@
 package KnapsackProblem;
 
-
-
 import java.util.ArrayList;
-import java.util.LinkedList;
-
-import Client.ClientController;
 
 public class Greedy {
 	static ArrayList<Item> orderedList;
 	private static ArrayList<Item> listOfItems;
 	static Item curItem;
-	//private int maxWeight;
 	private static int curWeight;
-	//private int numItems;
 	private static long curRatio;
 	private static long orderedCurRatio;
 	private static long curValue;
