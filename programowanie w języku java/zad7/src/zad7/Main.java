@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-
 public class Main {
 
 	public static void main(String[] args) throws Exception {
@@ -19,25 +18,18 @@ public class Main {
 		System.out.println("2. Wyswietl");
 		System.out.println("3. Zaszyfruj");
 		System.out.println("4. Rozszyfruj");
-		System.out.println("5. Wysjscie");
-		System.out.println("0. Wczytaj zaszyfrowany");
+		System.out.println("5. Wyjscie");
 
-		
 		int wyjscie = 0;
 		Scanner scanner = new Scanner(System.in);
 		String text = "";
-		String text2 = "";
 		while (wyjscie != 1) {
 			int wybor = scanner.nextInt();
 			switch (wybor) {
 			case 1:
 				text = loadToFile();
 				System.out.println("Wczytano!");
-				break;
-			case 0:
-				text2 = loadToFile2();
-				System.out.println("Wczytano!");
-				System.out.println(text2);
+				System.out.println(text);
 				break;
 			case 2:
 				System.out.println(text);
@@ -45,15 +37,13 @@ public class Main {
 			case 3:
 				text = szyfr.szyfruj(text);
 				saveToFile(text);
-				
-				System.out.println("Zaszyfrowano");
 				System.out.println(text);
 				break;
 			case 4:
-				text2 = szyfr.odszyfruj(text2);
-				//saveToFile(text);
+				text = szyfr.odszyfruj(text);
+				saveToFile(text);
 				System.out.println("Odszyfrowano");
-				System.out.println(text2);
+				System.out.println(text);
 				break;
 			case 5:
 				wyjscie = 1;
@@ -64,45 +54,34 @@ public class Main {
 		}
 
 	}
-	
-		
-	static String loadToFile() throws IOException
-	{	String text = "";
+
+	static String loadToFile() throws IOException {
+		String text = "";
 		String fileName = "test.txt";
-		BufferedReader fileReader =  new BufferedReader(new FileReader(fileName));
-		String linia="";
-		while ((linia=fileReader.readLine()) != null) {
-				text += linia;
+		BufferedReader fileReader = new BufferedReader(new FileReader(fileName));
+		String linia = "";
+		while ((linia = fileReader.readLine()) != null) {
+			text += linia;
 		}
+		fileReader.close();
 		return text;
 	}
-	
+
 	static void saveToFile(String text) throws Exception {
-		
-		
-		String fileName = "test2.txt";
-//		String path = "D:/eclipse-workspace/zad7/test.txt";
-//		File file = new File(path);
-//		if(file.delete()){
-//           System.out.println(file.getName() + " zostal skasowany!");
-//        }else{
- //           System.out.println("Operacja kasowania sie nie powiodla.");
- //       }
-		
-		
-		PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(fileName, true)));
-		pw.print(text);
-		pw.close();
-	}
-	static String loadToFile2() throws IOException
-	{	String text = "";
-		String fileName = "test2.txt";
-		BufferedReader fileReader =  new BufferedReader(new FileReader(fileName));
-		String linia="";
-		while ((linia=fileReader.readLine()) != null) {
-				text += linia;
+
+		String fileName = "test.txt";
+		String path = "D:/eclipse-workspace/zad7/test.txt";
+		File file = new File(path);
+		if (file.delete()) {
+			PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(fileName, true)));
+			pw.print(text);
+			pw.close();
+			System.out.println("Zaszyfrowano");
+		} else {
+			System.out.println("Operacja zakonczona niepowodzeniem.");
 		}
-		return text;
+
+		
 	}
-	
+
 }
