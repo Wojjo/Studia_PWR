@@ -1,8 +1,13 @@
+package zad2;
+
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * Klasa ta pozwala rozwi¹zaæ problem plecakowy metod¹ si³ow¹
  * @author Przemys³aw Wojcinowicz
  */
-package zad1;
+
 
 import java.util.ResourceBundle;
 
@@ -39,10 +44,12 @@ public class Brute_force  {
 	 * @param bundle przechowuje informacjê jaki jêzyk zosta³ wybrany 
 	 */
 	public void startAlgorithm() {
+		curBestValue=0;
+		curBestWeight=0;
 		current = new boolean[numItems];
 		solution = new boolean[numItems];
 		algorithm(numItems - 1);
-		//result();
+		result();
 
 	}
 	/**
@@ -80,6 +87,36 @@ public class Brute_force  {
 
 		}
 
+	}
+	
+public String result() {
+	
+		String items = " ";
+		String name = " Brute force ";
+		System.out.println(curBestValue);
+		for (int i = 0; i < numItems-1; i++) {
+			if (solution[i]) {
+				items += Threads.list.get(i + 1).index + " ";
+				
+			}
+			
+			
+		}
+		
+		String result2 = ("Rozwiazano uzywajac " + name + " Wynik: " + curBestValue + " Waga: " + curBestWeight
+				+ " Przedmioty: " + items);
+		Threads.result = new LinkedList<Solution>();
+		if(Threads.result.size() < Threads.size)
+		{
+		Threads.result.add(new Solution(items, curBestWeight));
+		}else
+		{
+			Threads.result.remove(0);
+			Threads.result.add(new Solution(items, curBestWeight));
+		}
+
+		System.out.println(result2);
+		return result2;
 	}
 
 }

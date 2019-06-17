@@ -22,19 +22,18 @@ public class Wynik {
 	 */
 	
 	public static void printResult(String algorithmName, float bestValue, int bestWeight, int numItems,
-			boolean[] solution, ResourceBundle bundle) 
+			boolean[] solution) 
 	{
-		String ind = bundle.getString("score4");
+		
 
 		for (int i = 0; i < numItems; i++) {
 			if (solution[i]) {
-				ind += Instancja.itemList.get(i).index + " ";
+				//ind += Instancja.itemList.get(i).index + " ";
 			}
 		}
 		
-		String wynik = bundle.getString("score") + algorithmName + bundle.getString("score2") + bestValue + bundle.getString("score3")
-				+ bestWeight + ind;
-		new Alert(Alert.AlertType.INFORMATION, wynik).showAndWait();
+		
+		
 
 		
 	}
